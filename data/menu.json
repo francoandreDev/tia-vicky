@@ -1,0 +1,302 @@
+[
+    {
+        "id": "c001",
+        "image": "ruta-imagen-hamburguesa",
+        "name": "Hamburguesa de Res",
+        "category": "Hamburguesas",
+        "description": "Deliciosa hamburguesa de res con lechuga, tomate y queso.",
+        "price": 15.99,
+        "stock": 50,
+        "status": true
+    },
+    {
+        "id": "c002",
+        "image": "ruta-imagen-pollo",
+        "name": "Pollo a la Brasa",
+        "category": "Pollo",
+        "description": "Pollo asado a la brasa con papas y ensalada.",
+        "price": 12.5,
+        "stock": 40,
+        "status": true
+    },
+    {
+        "id": "c003",
+        "image": "ruta-imagen-salchipapas",
+        "name": "Salchipapas Mixtas",
+        "category": "Salchipapas",
+        "description": "Salchipapas con salchichas y chorizo, acompañadas de salsas.",
+        "price": 9.99,
+        "stock": 30,
+        "status": true
+    },
+    {
+        "id": "c004",
+        "image": "ruta-imagen-huevo",
+        "name": "Huevo a la Mexicana",
+        "category": "Desayuno",
+        "description": "Desayuno con huevos revueltos, tomate, cebolla y jalapeños.",
+        "price": 7.99,
+        "stock": 25,
+        "status": true
+    },
+    {
+        "id": "c005",
+        "image": "ruta-imagen-sushi",
+        "name": "Sushi Variado",
+        "category": "Sushi",
+        "description": "Surtido de sushi fresco con diferentes variedades de pescado.",
+        "price": 20.99,
+        "stock": 35,
+        "status": true
+    },
+    {
+        "id": "c006",
+        "image": "ruta-imagen-tacos",
+        "name": "Tacos de Carne",
+        "category": "Tacos",
+        "description": "Tacos de carne asada con guarniciones variadas.",
+        "price": 11.99,
+        "stock": 40,
+        "status": true
+    },
+    {
+        "id": "c007",
+        "image": "ruta-imagen-pasta",
+        "name": "Pasta Carbonara",
+        "category": "Pastas",
+        "description": "Pasta carbonara con tocino y huevo.",
+        "price": 14.5,
+        "stock": 20,
+        "status": true
+    },
+    {
+        "id": "c008",
+        "image": "ruta-imagen-tortilla",
+        "name": "Tortilla Española",
+        "category": "Tortillas",
+        "description": "Tortilla española con papas y cebolla.",
+        "price": 8.99,
+        "stock": 30,
+        "status": true
+    },
+    {
+        "id": "c009",
+        "image": "ruta-imagen-pizza",
+        "name": "Pizza Margarita",
+        "category": "Pizzas",
+        "description": "Pizza clásica con tomate, mozzarella y albahaca.",
+        "price": 12.99,
+        "stock": 25,
+        "status": true
+    },
+    {
+        "id": "c010",
+        "image": "ruta-imagen-sandwich",
+        "name": "Sandwich de Pavo",
+        "category": "Sandwiches",
+        "description": "Sandwich de pavo con lechuga, tomate y mayonesa.",
+        "price": 6.99,
+        "stock": 60,
+        "status": true
+    },
+    {
+        "id": "c011",
+        "image": "ruta-imagen-chifa",
+        "name": "Arroz Chaufa",
+        "category": "Chifa",
+        "description": "Arroz chaufa con pollo y verduras.",
+        "price": 10.99,
+        "stock": 45,
+        "status": true
+    },
+    {
+        "id": "c012",
+        "image": "ruta-imagen-parrilla",
+        "name": "Parrillada Mixta",
+        "category": "Parrillas",
+        "description": "Parrillada con carne de res, cerdo y pollo.",
+        "price": 18.99,
+        "stock": 30,
+        "status": true
+    },
+    {
+        "id": "c013",
+        "image": "ruta-imagen-ensalada",
+        "name": "Ensalada César",
+        "category": "Ensaladas",
+        "description": "Ensalada césar con pollo a la parrilla y aderezo especial.",
+        "price": 9.5,
+        "stock": 35,
+        "status": true
+    },
+    {
+        "id": "c014",
+        "image": "ruta-imagen-tortas",
+        "name": "Torta de Chocolate",
+        "category": "Tortas",
+        "description": "Torta de chocolate con relleno de crema.",
+        "price": 5.99,
+        "stock": 40,
+        "status": true
+    },
+    {
+        "id": "c015",
+        "image": "ruta-imagen-sandwich-vegetariano",
+        "name": "Sandwich Vegetariano",
+        "category": "Sandwiches",
+        "description": "Sandwich vegetariano con hummus y vegetales frescos.",
+        "price": 7.99,
+        "stock": 25,
+        "status": true
+    },
+    {
+        "id": "c016",
+        "image": "ruta-imagen-torta-limon",
+        "name": "Torta de Limón",
+        "category": "Tortas",
+        "description": "Torta de limón con glaseado de limón.",
+        "price": 6.5,
+        "stock": 30,
+        "status": true
+    },
+    {
+        "id": "c017",
+        "image": "ruta-imagen-sandwich-club",
+        "name": "Sandwich Club",
+        "category": "Sandwiches",
+        "description": "Sandwich club con jamón, pavo, bacon, lechuga y tomate.",
+        "price": 8.99,
+        "stock": 20,
+        "status": true
+    },
+    {
+        "id": "c018",
+        "image": "ruta-imagen-pollo-broaster",
+        "name": "Pollo Broaster",
+        "category": "Pollo",
+        "description": "Pollo broaster crujiente con papas fritas.",
+        "price": 11.99,
+        "stock": 40,
+        "status": true
+    },
+    {
+        "id": "c019",
+        "image": "ruta-imagen-tacos-pescado",
+        "name": "Tacos de Pescado",
+        "category": "Tacos",
+        "description": "Tacos de pescado frito con repollo y salsa de crema.",
+        "price": 13.5,
+        "stock": 35,
+        "status": true
+    },
+    {
+        "id": "c020",
+        "image": "ruta-imagen-pizza-hawaiana",
+        "name": "Pizza Hawaiana",
+        "category": "Pizzas",
+        "description": "Pizza con piña, jamón y mozzarella.",
+        "price": 12.99,
+        "stock": 25,
+        "status": true
+    },
+    {
+        "id": "b001",
+        "image": "ruta-imagen-jugo-naranja",
+        "name": "Jugo de Naranja",
+        "category": "Jugos",
+        "description": "Refrescante jugo de naranja recién exprimido.",
+        "price": 3.99,
+        "stock": 100,
+        "status": true
+    },
+    {
+        "id": "b002",
+        "image": "ruta-imagen-agua-mineral",
+        "name": "Agua Mineral",
+        "category": "Aguas",
+        "description": "Botella de agua mineral sin gas.",
+        "price": 1.5,
+        "stock": 120,
+        "status": true
+    },
+    {
+        "id": "b003",
+        "image": "ruta-imagen-gaseosa-cola",
+        "name": "Gaseosa Cola",
+        "category": "Gaseosas",
+        "description": "Refrescante gaseosa sabor cola en lata.",
+        "price": 2.99,
+        "stock": 80,
+        "status": true
+    },
+    {
+        "id": "b004",
+        "image": "ruta-imagen-jugo-mango",
+        "name": "Jugo de Mango",
+        "category": "Jugos",
+        "description": "Jugo de mango natural y refrescante.",
+        "price": 3.49,
+        "stock": 90,
+        "status": true
+    },
+    {
+        "id": "b005",
+        "image": "ruta-imagen-agua-sin-gas",
+        "name": "Agua sin Gas",
+        "category": "Aguas",
+        "description": "Botella de agua sin gas de manantial.",
+        "price": 1.5,
+        "stock": 110,
+        "status": true
+    },
+    {
+        "id": "b006",
+        "image": "ruta-imagen-gaseosa-limon",
+        "name": "Gaseosa de Limón",
+        "category": "Gaseosas",
+        "description": "Gaseosa de limón refrescante en lata.",
+        "price": 2.99,
+        "stock": 70,
+        "status": true
+    },
+    {
+        "id": "b007",
+        "image": "ruta-imagen-jugo-pina",
+        "name": "Jugo de Piña",
+        "category": "Jugos",
+        "description": "Jugo de piña natural y delicioso.",
+        "price": 3.49,
+        "stock": 80,
+        "status": true
+    },
+    {
+        "id": "b008",
+        "image": "ruta-imagen-agua-con-gas",
+        "name": "Agua con Gas",
+        "category": "Aguas",
+        "description": "Botella de agua con gas burbujeante.",
+        "price": 1.5,
+        "stock": 100,
+        "status": true
+    },
+    {
+        "id": "b009",
+        "image": "ruta-imagen-gaseosa-naranja",
+        "name": "Gaseosa de Naranja",
+        "category": "Gaseosas",
+        "description": "Gaseosa de naranja refrescante en lata.",
+        "price": 2.99,
+        "stock": 60,
+        "status": true
+    },
+    {
+        "id": "b010",
+        "image": "ruta-imagen-jugo-uva",
+        "name": "Jugo de Uva",
+        "category": "Jugos",
+        "description": "Jugo de uva natural y saludable.",
+        "price": 3.49,
+        "stock": 70,
+        "status": true
+    }
+]
