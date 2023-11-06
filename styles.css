@@ -362,14 +362,69 @@
         --font-weight-normal: 400;
         --font-weight-semibold: 600;
         --font-weight-bold: 700;
+        --color-accent: #e6b142;
+        --color-dark-accent: #a68d65;
+        --color-primary: #fff8ea;
+        --color-secondary: #402e32;
+        --color-subtle-error: #ff0039;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+
+    ::selection {
+        background-color: var(--color-secondary);
+        color: var(--color-accent);
     }
 
     .app {
         font-family: var(--font-family-default);
         font-weight: var(--font-weight-normal);
+        min-height: 100vh;
+        max-width: 100vw;
+        color-scheme: light dark;
+        font-size: 16px;
+        padding: 1rem;
     }
 
     input {
         font-family: var(--font-family-interactive);
+    }
+
+    main {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        scroll-snap-align: center;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .container-iframe {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 16/9;
+        margin-bottom: 2rem;
+    }
+
+    .container-iframe > iframe {
+        position: absolute;
+        inset: 0;
+        left: 5%;
+        width: 90%;
+        height: 100%;
+    }
+
+    footer {
+        text-align: center;
+        text-wrap: balance;
     }
 }
