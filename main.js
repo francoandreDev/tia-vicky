@@ -1,24 +1,30 @@
 function fillDataWithJson() {
     function fillProductsData(query, jsonPath) {
         const allProducts = document.querySelector(query);
-        const [...productCards] = allProducts.children;
         fetch(jsonPath)
             .then((res) => res.json())
             .then((res) => {
-                productCards.forEach((productCard, index) => {
-                    const price = productCard.querySelector(".price");
-                    const name = productCard.querySelector(".name");
-                    const category = productCard.querySelector(".category");
-                    const image =
-                        productCard.querySelector(".wrapper-image>img");
-                    const description =
-                        productCard.querySelector(".description");
-                    price.textContent = "S/. " + res[index].price;
-                    name.textContent = res[index].name;
-                    category.textContent = res[index].category;
-                    description.textContent = res[index].description;
-                    image.alt = "Imagen de " + res[index].name;
-                    image.src = res[index].image;
+                res.forEach((product) => {
+                    const productElement = document.createElement("section");
+                    productElement.classList.add("product", "card");
+                    productElement.innerHTML = `
+                    <div class="wrapper-image">
+                    <img src=${product.image} alt= "Imagen de " ${product.name}>
+                    <!-- pricing tag -->
+                    <div class="tag">
+                        <p class="price">S/. ${product.price}</p>
+                    </div>
+                    <!-- pricing tag -->
+                </div>
+                <h3 class="name">${product.name}</h3>
+                <p class="category">${product.category}</p>
+                <p class="description">${product.description}</p>
+                <div class="interactive-zone">
+                    <button><i class="fa-solid fa-cart-plus"></i>Agregar</button>
+                    <input type="number" aria-label="input-number-" value="0">
+                </div>
+                    `;
+                    allProducts.appendChild(productElement);
                 });
             })
             .catch((err) => console.error(err));
@@ -37,17 +43,22 @@ function fillDataWithJson() {
             .catch((err) => console.error(err));
     }
 
-    function fillDataComments(query, subQuery, jsonPath) {
-        const [...cards] = document.querySelectorAll(query);
+    function fillDataComments(query, jsonPath) {
+        const postedParentElement = document.querySelector(query);
 
         fetch(jsonPath)
             .then((res) => res.json())
             .then((res) => {
-                cards.forEach((card, index) => {
-                    const [...paragraphs] = card.querySelectorAll(subQuery);
-                    paragraphs[0].textContent = res[index].name;
-                    paragraphs[1].textContent = res[index].time;
-                    paragraphs[2].textContent = res[index].comment;
+                res.forEach(({ gender, name, time, comment }) => {
+                    const cardPublished = document.createElement("article");
+                    cardPublished.classList.add("card", "published");
+                    cardPublished.innerHTML = `
+                        <div class="circle ${gender.toLowerCase()}"></div>
+                        <p class="name">${name}</p>
+                        <p class="time">${time}</p>
+                        <p class="comment"><b>${comment}</b></p>
+                    `;
+                    postedParentElement.appendChild(cardPublished);
                 });
             })
             .catch((err) => console.error(err));
@@ -55,7 +66,7 @@ function fillDataWithJson() {
 
     fillProductsData("#productos>.products", "./data/menu.json");
     fillAboutData("#nosotros>p.about-us", "./data/about.json");
-    fillDataComments("#opiniones .card.published", "p", "./data/comments.json");
+    fillDataComments("#posted-comments", "./data/comments.json");
 }
 
 fillDataWithJson();

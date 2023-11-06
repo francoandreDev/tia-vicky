@@ -378,6 +378,12 @@
         color: var(--color-accent);
     }
 
+    body {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        scroll-snap-align: center;
+    }
+
     .app {
         font-family: var(--font-family-default);
         font-weight: var(--font-weight-normal);
@@ -393,9 +399,13 @@
     }
 
     main {
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-        scroll-snap-align: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header" "promos" "wave" "products" "about"
+            "comments" "contact us";
+        justify-items: center;
+        gap: 1rem;
     }
 
     li {
@@ -405,6 +415,10 @@
     a {
         text-decoration: none;
         color: inherit;
+    }
+
+    img {
+        max-width: 90vw;
     }
 
     .container-iframe {
