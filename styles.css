@@ -391,7 +391,20 @@
         max-width: 100vw;
         color-scheme: light dark;
         font-size: 16px;
-        padding: 1rem;
+    }
+
+    .app > nav {
+        background-color: var(--color-accent);
+    }
+
+    .app > *:not(.separator-wave) {
+        margin: 0 1rem;
+    }
+
+    .app > main > :nth-child(2n + 1),
+    .app > main > header:first-of-type,
+    .app > main > #promos {
+        background-color: var(--color-accent);
     }
 
     input {
@@ -400,12 +413,43 @@
 
     main {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "header" "promos" "wave" "products" "about"
-            "comments" "contact us";
+        grid-template-rows: 1fr;
+        grid-template-areas: "header" "promos" "separator-1" "productos" "separator-2";
         justify-items: center;
-        gap: 1rem;
+    }
+
+    main > * {
+        width: 100%;
+    }
+
+    main > header:first-of-type {
+        grid-area: header;
+    }
+
+    main > #promos {
+        grid-area: promos;
+    }
+
+    main > #productos {
+        grid-area: productos;
+    }
+
+    main > .separator-wave:nth-of-type(1) {
+        grid-area: separator-1;
+    }
+
+    main > .separator-wave:nth-of-type(2) {
+        grid-area: separator-2;
+    }
+
+    .separator-wave {
+        width: 100%;
+        height: 3rem;
+        background-color: var(--color-primary);
+    }
+
+    .separator-wave:nth-of-type(2n) {
+        background-color: var(--color-accent);
     }
 
     li {

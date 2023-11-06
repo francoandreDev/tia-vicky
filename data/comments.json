@@ -1,16 +1,76 @@
 [
     {
         "id": 1,
-        "name": "Jhon Doe",
-        "gender": "Male",
-        "time": "28/10/2023",
-        "comment": "Fermentum et non arcu odio nunc eros donec pretium. Et orci enim in duis. Ipsum a dolor et augue in ut consectetur placerat. "
+        "name": "Laura Gómez",
+        "gender": "Female",
+        "time": "05/11/2023",
+        "comment": "¡La comida de esta tienda virtual es espectacular! El sabor es auténtico y la entrega fue rápida. Sin duda, volveré a ordenar."
     },
     {
         "id": 2,
-        "name": "Clementina DuBuque",
+        "name": "Carlos Martínez",
+        "gender": "Male",
+        "time": "04/11/2023",
+        "comment": "Excelente experiencia. La comida llegó caliente y deliciosa. Definitivamente recomendaré esta tienda a mis amigos."
+    },
+    {
+        "id": 3,
+        "name": "Sofía Rodríguez",
         "gender": "Female",
-        "time": "02/09/2021",
-        "comment": "Fermentum et non arcu odio nunc eros donec pretium. Et orci enim in duis. Ipsum a dolor et augue in ut consectetur placerat. "
+        "time": "03/11/2023",
+        "comment": "Me sorprendió lo rápido que llegó mi pedido. La calidad de la comida es inmejorable. Estoy encantada con esta tienda."
+    },
+    {
+        "id": 4,
+        "name": "Juan Pérez",
+        "gender": "Male",
+        "time": "02/11/2023",
+        "comment": "La comida es deliciosa y la presentación es impecable. Sin duda, una de las mejores opciones para pedir comida en línea."
+    },
+    {
+        "id": 5,
+        "name": "María Fernández",
+        "gender": "Female",
+        "time": "01/11/2023",
+        "comment": "He probado varios platillos de esta tienda y todos son excelentes. La variedad de opciones es impresionante. ¡Muy recomendable!"
+    },
+    {
+        "id": 6,
+        "name": "Alejandro Torres",
+        "gender": "Male",
+        "time": "31/10/2023",
+        "comment": "La comida llegó en perfectas condiciones. La atención al cliente es sobresaliente. ¡Gracias por la deliciosa cena!"
+    },
+
+    {
+        "id": 7,
+        "name": "Ana López",
+        "gender": "Female",
+        "time": "30/10/2023",
+        "comment": "Hace tiempo que no probaba una comida tan sabrosa. Estoy feliz de haber descubierto esta tienda. El servicio es de primera."
+    },
+
+    {
+        "id": 8,
+        "name": "Luis Ramírez",
+        "gender": "Male",
+        "time": "29/10/2023",
+        "comment": "Los precios son razonables y la calidad es excepcional. Sin duda, esta tienda se ha convertido en mi opción número uno para pedir comida."
+    },
+
+    {
+        "id": 9,
+        "name": "Elena Sánchez",
+        "gender": "Female",
+        "time": "28/10/2023",
+        "comment": "La comida llegó antes de lo esperado y estaba deliciosa. Definitivamente volveré a ordenar. ¡Muy satisfecha con mi experiencia!"
+    },
+
+    {
+        "id": 10,
+        "name": "Roberto González",
+        "gender": "Male",
+        "time": "27/10/2023",
+        "comment": "La comida de esta tienda es simplemente increíble. La presentación es asombrosa y el sabor es insuperable. ¡No puedo esperar para probar más platos!"
     }
 ]
