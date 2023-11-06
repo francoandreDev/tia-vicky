@@ -369,16 +369,12 @@
         --color-subtle-error: #ff0039;
     }
 
-    ::-webkit-scrollbar {
-        width: 0;
-    }
-
     ::selection {
         background-color: var(--color-secondary);
         color: var(--color-accent);
     }
 
-    body {
+    html {
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
         scroll-snap-align: center;
