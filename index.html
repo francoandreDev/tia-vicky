@@ -8,22 +8,27 @@
     <meta name="keywords" content="Comida Comer Pedir Consumir Comprar Pollo Broaster Frito Papas Refrescos Gaseosas">
     <link rel="shortcut icon" href="./assets/icon/icon.jpg" type="image/png">
     <title>Tía Vicky</title>
-    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Open+Sans&Ubuntu" as="style"
-        onload='this.onload=null,this.rel="stylesheet"'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet';">
     <noscript>
         <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap&display=swap"
-            rel="stylesheet" type="text/css">
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap"
+            rel="stylesheet">
     </noscript>
+
     <link rel="stylesheet" href="./styles.css">
-    <script type="module" src="./main.js" async></script>
+    <script type="module" src="./main.js" defer></script>
     <script src="https://kit.fontawesome.com/e00d06d5d7.js"></script>
 </head>
 
 <body>
     <div class="app">
         <nav id="nav">
-            <h1 class="logo"><span class="name">Tía</span><span class="name">Vicky</span></h1>
+            <h1 class="logo">
+                <span class="name">Tía</span>
+                <span class="name">Vicky</span></h1>
             <ul>
                 <li><a href="#promos">Promos</a></li>
                 <li><a href="#productos">Productos</a></li>
@@ -49,38 +54,18 @@
                 <h2>Promos</h2>
                 <article class="promo">
                     <section class="carrousel">
-                        <div class="card">
-                            <h3 class="promo-name"><b></b></h3>
-                            <!-- content card -->
-                            <div class="wrapper-image">
-                                <img src="" alt="">
-                            </div>
-                            <!-- content card -->
-                            <p class="description"></p>
-                            <!-- pricing tag -->
-                            <div class="tag">
-                                <p class="price"></p>
-                            </div>
-                            <!-- pricing tag -->
-                            <!-- offer -->
-                            <div class="offer">
-                                <p></p>
-                            </div>
-                            <!-- offer -->
-                            <!-- move controllers -->
-                            <!-- ?left -->
-                            <button class="circle-controller">
-                                Anterior
-                                <i class="fa-solid fa-angle-left"></i>
-                            </button>
-                            <!-- ?right -->
-                            <button class="circle-controller">
-                                Siguiente
-                                <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <!-- move controllers -->
-                        </div>
+                        <!-- ?offers -->
                     </section>
+                    <button class="circle-controller">
+                        <i class="fa-solid fa-angle-left"></i>
+                        Anterior
+                    </button>
+                    <!-- ?right -->
+                    <button class="circle-controller">
+                        Siguiente
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                    <!-- move controllers -->
                 </article>
             </section>
             <div class="separator-wave"></div>
@@ -130,7 +115,7 @@
             <section id="nosotros">
                 <h2>Sobre Nosotros</h2>
                 <div class="wrapper-image">
-                    <img src="" alt="">
+                    <img src="./assets/images/nosotros.png" alt="imagen de tienda">
                 </div>
                 <p class="about-us"></p>
                 <p class="about-us"></p>
@@ -143,12 +128,12 @@
                     <!-- cards -->
                     <article class="card new">
                         <div class="circle unknown"></div>
-                        <input type="text" class="name" aria-label="input-name-comment">
-                        <p class="time now"></p>
-                        <input type="text" class="comment" aria-label="input-comment-comment">
+                        <input type="text" placeholder="Ingrese su nombre" class="name" aria-label="input-name-comment">
+                        <p class="time now">Hace 0s</p>
+                        <input type="text" placeholder="Ingrese su comentario aquí" class="comment" aria-label="input-comment-comment">
                         <div class="genders">
-                            <div class="male"></div>
-                            <div class="female"></div>
+                            <div class="male"><i class="fa-solid fa-mars"></i></div>
+                            <div class="female"><i class="fa-solid fa-venus"></i></div>
                         </div>
                         <div class="interactive-zone">
                             <button>

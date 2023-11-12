@@ -1,0 +1,132 @@
+[
+    {
+        "id": 1,
+        "name": "Pizza Margarita",
+        "image": "https://www.annarecetasfaciles.com/files/pizza-margarita-1-scaled.jpg",
+        "description": "Deliciosa pizza de tomate, mozzarella y albahaca",
+        "offer": "2x1",
+        "time": "15/12/2023",
+        "prices": {
+            "normal": 12.99,
+            "new": 6.49
+        },
+        "stock": 50
+    },
+    {
+        "id": 2,
+        "name": "Hamburguesa Clásica",
+        "image": "https://www.cardamomo.news/__export/1602724862579/sites/debate/img/2020/10/14/disexo_sin_txtulo_x3x.jpg_1635092770.jpg",
+        "description": "Una hamburguesa de carne jugosa con lechuga, tomate y queso",
+        "offer": "3x2",
+        "time": "20/12/2023",
+        "prices": {
+            "normal": 9.99,
+            "new": 6.66
+        },
+        "stock": 40
+    },
+    {
+        "id": 3,
+        "name": "Sushi Variado",
+        "image": "https://imag.bonviveur.com/sushi-casero.jpg",
+        "description": "Un surtido de sushi fresco y delicioso",
+        "offer": "25%",
+        "time": "10/12/2023",
+        "prices": {
+            "normal": 24.99,
+            "new": 18.74
+        },
+        "stock": 30
+    },
+    {
+        "id": 4,
+        "name": "Coca-Cola",
+        "image": "https://vivanda.vtexassets.com/arquivos/ids/277206-800-450?v=637626622648070000&width=800&height=450&aspect=true",
+        "description": "Refresco de cola en lata",
+        "offer": "2x1",
+        "time": "14/12/2023",
+        "prices": {
+            "normal": 1.99,
+            "new": 0.99
+        },
+        "stock": 100
+    },
+    {
+        "id": 5,
+        "name": "Ensalada César",
+        "image": "https://cloudfront-us-east-1.images.arcpublishing.com/elcomercio/EOQAL66HYBDDTI3ZYIA5FZIQHU.jpg",
+        "description": "Ensalada fresca con pollo a la parrilla y aderezo César",
+        "offer": "50%",
+        "time": "12/12/2023",
+        "prices": {
+            "normal": 8.99,
+            "new": 4.49
+        },
+        "stock": 25
+    },
+    {
+        "id": 6,
+        "name": "Cerveza Artesanal IPA",
+        "image": "https://www.cocinista.es/download/bancorecursos/recetas/receta-cerveza-ipa-imperial.jpg",
+        "description": "Cerveza India Pale Ale de producción local",
+        "offer": "3x2",
+        "time": "22/12/2023",
+        "prices": {
+            "normal": 5.99,
+            "new": 3.99
+        },
+        "stock": 60
+    },
+    {
+        "id": 7,
+        "name": "Tacos de Carne Asada",
+        "image": "https://www.goya.com/media/4124/carne-asada-tacos1.jpg?quality=80",
+        "description": "Tacos de carne asada con guarniciones",
+        "offer": "2x1",
+        "time": "18/12/2023",
+        "prices": {
+            "normal": 10.99,
+            "new": 5.49
+        },
+        "stock": 35
+    },
+    {
+        "id": 8,
+        "name": "Pastel de Chocolate",
+        "image": "https://cdn2.cocinadelirante.com/sites/default/files/images/2023/08/receta-de-pastel-de-chocolate-facil.jpg",
+        "description": "Delicioso pastel de chocolate con crema",
+        "offer": "25%",
+        "time": "11/12/2023",
+        "prices": {
+            "normal": 14.99,
+            "new": 11.24
+        },
+        "stock": 20
+    },
+    {
+        "id": 9,
+        "name": "Batido de Frutas",
+        "image": "https://www.pequerecetas.com/wp-content/uploads/2012/03/batido-de-fresa-y-platano-receta-saludable.jpeg",
+        "description": "Batido refrescante de frutas variadas",
+        "offer": "2x1",
+        "time": "13/12/2023",
+        "prices": {
+            "normal": 3.99,
+            "new": 1.99
+        },
+        "stock": 45
+    },
+    {
+        "id": 10,
+        "name": "Café Espresso",
+        "image": "https://editorialtelevisa.brightspotcdn.com/wp-content/uploads/2013/04/cafe-espresso.jpg",
+        "description": "Café espresso recién hecho",
+        "offer": "3x2",
+        "time": "19/12/2023",
+        "prices": {
+            "normal": 2.49,
+            "new": 1.66
+        },
+        "stock": 55
+    }
+]
