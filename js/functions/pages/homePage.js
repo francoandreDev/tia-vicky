@@ -8,9 +8,8 @@ import {
 import {
     dataJsonArrayManagement,
     dataJsonObjectManagement,
+    localStorage
 } from "../utils/managers.js";
-
-const { localStorage } = window;
 
 const theProducts = new Products();
 
