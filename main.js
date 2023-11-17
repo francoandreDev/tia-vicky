@@ -1,138 +1,161 @@
-function fillDataWithJson() {
-    function fillPromosData(query, jsonPath) {
-        const carrouselCards = document.querySelector(query);
-        fetch(jsonPath)
-            .then((res) => res.json())
-            .then((res) => {
-                res.forEach(
-                    ({
-                        name,
-                        image,
-                        description,
-                        offer,
-                        time,
-                        prices,
-                        stock,
-                    }) => {
-                        const card = document.createElement("div");
-                        card.classList.add("card");
-                        card.innerHTML = `
-                            <h3 class="promo-name text-center"><b>${name}</b></h3>
-                            <!-- content card -->
-                            <div class="wrapper-image">
-                                <img src=${image} alt="Imagen de ${name}">
-                            </div>
-                            <!-- content card -->
-                            <p class="description text-center text-balance">${description}</p>
-                            <!-- pricing tag -->
-                            <div class="tag">
-                                <p class="price old">${prices.normal}</p>
-                                <p class="price new">${prices.new}</p>
-                            </div>
-                            <!-- pricing tag -->
-                            <!-- offer -->
-                            <div class="offer">
-                                <p>${offer}</p>
-                            </div>
-                            <p class="time">${time}</p>
-                            <span class="stock">${stock}</span>
-                            <!-- offer -->
-                        `;
-                        carrouselCards.appendChild(card);
-                    }
-                );
-            })
-            .catch((err) => console.error(err));
+import { Products } from "./js/classes/class.js";
+import {
+    createCardTemplatePromos,
+    createCommentTemplate,
+    createProductTemplate,
+    dataJsonArrayManagement,
+    dataJsonObjectManagement,
+} from "./js/functions/function.js";
+
+const localStorage = window.localStorage;
+
+const productsLogic = new Products();
+
+clickLogoTiaVicky();
+getDataFromJson();
+productsInteractive();
+
+function clickLogoTiaVicky() {
+    document.querySelector("h1.logo").addEventListener("click", () => {
+        goToTop();
+    });
+    function goToTop() {
+        window.scroll({ top: 0, left: 0, behavior: "smooth" });
     }
-    function fillProductsData(query, jsonPath) {
-        const allProducts = document.querySelector(query);
-        fetch(jsonPath)
-            .then((res) => res.json())
-            .then((res) => {
-                res.forEach((product) => {
-                    let showPrice = product.price;
-                    if (showPrice.toString().endsWith(".5"))
-                        showPrice = showPrice.toString() + "0";
-                    const productElement = document.createElement("section");
-                    productElement.classList.add("product", "card");
-                    productElement.innerHTML = `
-                    <div class="wrapper-image">
-                    <img src=${product.image} alt= "Imagen de " ${product.name}>
-                    <!-- pricing tag -->
-                    <div class="tag">
-                        <p class="price">S/. ${showPrice}</p>
-                    </div>
-                    <!-- pricing tag -->
-                </div>
-                <h3 class="name">${product.name}</h3>
-                <p class="category">${product.category}</p>
-                <p class="description">${product.description}</p>
-                <div class="interactive-zone">
-                    <button><i class="fa-solid fa-cart-plus"></i>Agregar</button>
-                    <input type="number" aria-label="input-number-${product.name}" value="0">
-                </div>
-                    `;
-                    allProducts.appendChild(productElement);
-                });
-            })
-            .catch((err) => console.error(err));
+}
+
+function getDataFromJson() {
+    dataJsonObjectManagement(
+        "#promos .carrousel",
+        "./data/offers.json",
+        createCardTemplatePromos
+    );
+    getAllProductsData("#productos>.products", "./data/menu.json");
+    fillAboutData("#nosotros>p.about-us", "./data/about.json");
+    dataJsonObjectManagement(
+        "#posted-comments",
+        "./data/comments.json",
+        createCommentTemplate
+    );
+
+    function getAllProductsData(query, jsonPath) {
+        dataJsonObjectManagement(
+            query,
+            jsonPath,
+            createProductTemplate,
+            "products"
+        );
+        productsLogic.setProducts(JSON.parse(localStorage.getItem("products")));
     }
 
     function fillAboutData(query, jsonPath) {
-        const [...paragraphs] = document.querySelectorAll(query);
+        dataJsonArrayManagement(query, jsonPath);
+    }
+}
 
-        fetch(jsonPath)
-            .then((res) => res.json())
-            .then((res) => {
-                paragraphs.forEach((p, index) => {
-                    p.textContent = res[index];
-                });
-            })
-            .catch((err) => console.error(err));
+function productsInteractive() {
+    const filterElement = document.getElementById("filter-products");
+
+    searchProducts();
+    clickToggleElementActive(filterElement);
+    showSelectedFilters();
+    showAllFilters();
+    filterProducts();
+
+    function searchProducts() {
+        const allProductsElement = document.querySelector(
+            "#productos>.products"
+        );
+        const input = document.querySelector("#search-product>input");
+        input.addEventListener("input", (e) => {
+            let search = e.target.value;
+            //? delete the previous data
+            allProductsElement.innerHTML = "";
+            productsLogic.resetSearch();
+            productsLogic.getProductsByName(search);
+            productsLogic.showProducts.forEach((product) => {
+                const productElement = createProductTemplate(product);
+                allProductsElement.appendChild(productElement);
+            });
+        });
     }
 
-    function fillDataComments(query, jsonPath) {
-        const postedParentElement = document.querySelector(query);
-
-        fetch(jsonPath)
-            .then((res) => res.json())
-            .then((res) => {
-                res.forEach(({ gender, name, time, comment }) => {
-                    const cardPublished = document.createElement("article");
-                    cardPublished.classList.add("card", "published");
-                    cardPublished.innerHTML = `
-                        <div class="circle ${gender.toLowerCase()}"></div>
-                        <p class="name">${name}</p>
-                        <p class="time">${time}</p>
-                        <p class="comment"><b>${comment}</b></p>
-                    `;
-                    postedParentElement.appendChild(cardPublished);
-                });
-            })
-            .catch((err) => console.error(err));
+    function clickToggleElementActive(element) {
+        element.addEventListener("click", () => {
+            let currentClass = filterElement.classList[1];
+            if (currentClass === "active") {
+                filterElement.classList.replace("active", "inactive");
+            } else {
+                filterElement.classList.replace("inactive", "active");
+            }
+        });
     }
 
-    fillPromosData("#promos .carrousel", "./data/offers.json");
-    fillProductsData("#productos>.products", "./data/menu.json");
-    fillAboutData("#nosotros>p.about-us", "./data/about.json");
-    fillDataComments("#posted-comments", "./data/comments.json");
-}
+    function showSelectedFilters() {
+        const activeFilters = productsLogic.getListFilters();
+        const selectedFiltersElement =
+            document.getElementById("selected-filters");
+        // ? reset content
+        selectedFiltersElement.innerHTML = "";
+        activeFilters.forEach((filterName) => {
+            const showDefault = document.createElement("li");
+            showDefault.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+            showDefault.classList.add("filter", "bg-default");
+            if (activeFilters.length === 0) {
+                showDefault.id = "default-filter";
+            } else {
+                showDefault.innerHTML += `<p>${filterName}</p>`;
+            }
+            showDefault.addEventListener("click", () => {
+                productsLogic.removeFilter("category", filterName);
+                showSelectedFilters();
+                const parent = document.querySelector("#productos>.products");
+                fillProductsByCategory(parent);
+            });
+            selectedFiltersElement.appendChild(showDefault);
+        });
+    }
 
-function allInputsMultiLine(query) {
-    const [...inputs] = document.querySelectorAll(query);
-    inputs.forEach((input) => {
-        doMultilineInputs(input);
-    });
-}
+    function showAllFilters() {
+        const listFiltersElement = document.getElementById("list-filters");
+        // ? reset content
+        listFiltersElement.innerHTML = "";
 
-function doMultilineInputs(element) {
-    element.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            this.value += "\n";
-        }
-    });
-}
+        productsLogic.listAllFilters.forEach((filter) => {
+            const showFilter = document.createElement("li");
+            showFilter.classList.add("filter", "bg-default");
+            showFilter.innerHTML = `
+                <p>${filter}</p>
+                `;
+            listFiltersElement.appendChild(showFilter);
+        });
+    }
 
-fillDataWithJson();
-allInputsMultiLine("#opiniones input");
+    function filterProducts() {
+        const allFiltersArea = document.getElementById("list-filters");
+        const allFiltersElements = [...allFiltersArea.children];
+        allFiltersElements.forEach((filterElement) => {
+            filterElement.addEventListener("click", () => {
+                // click x in selected filters // delete filters
+                const newFilter = filterElement.querySelector("p").textContent;
+                productsLogic.addProductsByFilter("category", [
+                    ...productsLogic.getListFilters(),
+                    newFilter,
+                ]);
+                // ? update
+                showSelectedFilters();
+                fillProductsByCategory(
+                    document.querySelector("#productos>.products")
+                );
+            });
+        });
+    }
+
+    function fillProductsByCategory(parent) {
+        parent.innerHTML = "";
+        productsLogic.showProducts.forEach((product) => {
+            const productElement = createProductTemplate(product);
+            parent.appendChild(productElement);
+        });
+    }
+}

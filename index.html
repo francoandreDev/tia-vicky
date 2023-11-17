@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tienda Virtual de Comida Rápida">
     <meta name="keywords" content="Comida Comer Pedir Consumir Comprar Pollo Broaster Frito Papas Refrescos Gaseosas">
-    <link rel="shortcut icon" href="./assets/icon/icon.jpg" type="image/png">
+    <link rel="shortcut icon" href="./assets/icon/icon.jpg" type="image/jpg">
     <title>Tía Vicky</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload"
@@ -17,7 +17,6 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap"
             rel="stylesheet">
     </noscript>
-
     <link rel="stylesheet" href="./styles.css">
     <script type="module" src="./main.js" defer></script>
     <script src="https://kit.fontawesome.com/e00d06d5d7.js"></script>
@@ -25,10 +24,11 @@
 
 <body>
     <div class="app">
-        <nav id="nav">
+        <nav id="nav" class="bg-accent">
             <h1 class="logo">
                 <span class="name">Tía</span>
-                <span class="name">Vicky</span></h1>
+                <span class="name">Vicky</span>
+            </h1>
             <ul>
                 <li><a href="#promos">Promos</a></li>
                 <li><a href="#productos">Productos</a></li>
@@ -42,7 +42,7 @@
             </div>
         </nav>
         <main>
-            <header>
+            <header class="bg-accent">
                 <img src="./assets/images/banner.jpg" alt="Banner image" class="banner-image">
                 <p class="slogan">
                     <span>Tu antojo</span>
@@ -50,106 +50,112 @@
                     <span class="bigger-text">Especialidad</span>
                 </p>
             </header>
-            <section id="promos">
+            <section id="promos" class="bg-accent">
                 <h2>Promos</h2>
                 <article class="promo">
                     <section class="carrousel">
                         <!-- ?offers -->
+                        <!-- * js fill with data function -->
                     </section>
-                    <button class="circle-controller">
-                        <i class="fa-solid fa-angle-left"></i>
-                        Anterior
-                    </button>
-                    <!-- ?right -->
-                    <button class="circle-controller">
-                        Siguiente
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <!-- move controllers -->
+                    <!-- ! move controllers -->
+                    <div class="controller-zone">
+                        <button class="circle-controller">
+                            <i class="fa-solid fa-angle-left"></i>
+                            <span>Anterior</span>
+                        </button>
+                        <!-- ?right -->
+                        <button class="circle-controller">
+                            <span>Siguiente</span>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                    <!-- ! move controllers -->
                 </article>
             </section>
-            <div class="separator-wave"></div>
-            <section id="productos">
+            <div class="separator-wave bg-accent">
+            </div>
+            <section id="productos" class="bg-default">
                 <h2>Productos</h2>
-                <!-- search product -->
-                <div id="search-product">
-                    <input type="text" value="Buscar">
+                <!-- ! search product -->
+                <div id="search-product" class="rounded-borders bg-accent">
+                    <input type="text" placeholder="Buscar aquí">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <!-- search product -->
-                <!-- filters -->
-                <div id="filter-products">
+                <!-- ! search product -->
+                <!-- ! filters -->
+                <div id="filter-products" class="rounded-borders bg-accent inactive">
                     <i class="fa-solid fa-filter"></i>
-                    <span id="show-active-filters"></span>
+                    <span id="show-active-filters">
+                        <p class="text-default">Filtrar</p>
+                        <p class="text-filters"></p>
+                    </span>
                     <div id="all-filters">
                         <!-- ? selected filters -->
                         <ul id="selected-filters">
-                            <li class="filter">
-                                <i class="fa-solid fa-xmark"></i>
-                                <p>A - Z</p>
-                            </li>
-                            <li class="filter">
-                                <i class="fa-solid fa-xmark"></i>
-                                <p>Menos de S/. 25</p>
-                            </li>
+                            <!-- * fill with js using data function -->
                         </ul>
                         <!-- ? selected filters -->
                         <!-- ? list of filters -->
-                        <ul id="list-filters">
-                            <li>Sin filtros</li>
-                            <li>A - Z</li>
-                            <li>Z - A</li>
-                            <li>Menos de S/. 25</li>
-                            <li>Más de S/. 25</li>
+                        <ul id="list-filters" class="rounded-borders">
+                            <!-- * js fill this with data function -->
                         </ul>
                         <!-- ? list of filters -->
                     </div>
                 </div>
-                <!-- filters -->
-                <!-- products -->
+                <!-- ! filters -->
+                <!-- ! products -->
                 <section class="products">
+                    <!-- * js fill this with data function -->
                 </section>
-                <!-- products -->
+                <!-- ! products -->
             </section>
-            <div class="separator-wave"></div>
-            <section id="nosotros">
+            <div class="separator-wave bg-default"></div>
+            <section id="nosotros" class="bg-accent">
                 <h2>Sobre Nosotros</h2>
                 <div class="wrapper-image">
                     <img src="./assets/images/nosotros.png" alt="imagen de tienda">
                 </div>
+                <!-- * js fill this using data function -->
                 <p class="about-us"></p>
                 <p class="about-us"></p>
                 <p class="about-us"></p>
+                <!-- * js fill this using data function -->
             </section>
-            <div class="separator-wave"></div>
-            <section id="opiniones">
+            <div class="separator-wave bg-accent"></div>
+            <section id="opiniones" class="bg-default">
                 <h2>Opiniones</h2>
+                <!-- cards -->
                 <section class="cards">
-                    <!-- cards -->
-                    <article class="card new">
-                        <div class="circle unknown"></div>
+                    <!-- ! new comment -->
+                    <article class="card new rounded-borders bg-accent">
+                        <div class="circle unknown bg-default"></div>
                         <input type="text" placeholder="Ingrese su nombre" class="name" aria-label="input-name-comment">
-                        <p class="time now">Hace 0s</p>
-                        <input type="text" placeholder="Ingrese su comentario aquí" class="comment" aria-label="input-comment-comment">
+                        <p class="time now">Ahora</p>
+                        <input type="text" placeholder="Ingrese su comentario aquí" class="comment"
+                            aria-label="input-comment-comment">
                         <div class="genders">
                             <div class="male"><i class="fa-solid fa-mars"></i></div>
                             <div class="female"><i class="fa-solid fa-venus"></i></div>
                         </div>
                         <div class="interactive-zone">
-                            <button>
+                            <button class="bg-default">
                                 <i class="fa-solid fa-plus"></i>Publicar
                             </button>
-                            <button>
+                            <button class="bg-default">
                                 <i class="fa-solid fa-x"></i>Descartar
                             </button>
                         </div>
                     </article>
-                    <div id="posted-comments"></div>
-                    <!-- cards -->
+                    <!-- ! new comment -->
+                    <div id="posted-comments">
+                        <!-- * js fill with data function -->
+                    </div>
                 </section>
+                <!-- cards -->
             </section>
-            <section id="contacto">
+            <section id="contacto" class="bg-accent">
                 <h2>Contáctanos</h2>
+                <!-- !social media section -->
                 <section id="social-media">
                     <span>
                         <i class="fa-brands fa-whatsapp"></i>
@@ -176,13 +182,15 @@
                         <p>La Tía Vicky</p>
                     </span>
                 </section>
+                <!-- !social media section -->
                 <p class="location-ask"><b>¿Dónde encontrarnos?</b></p>
                 <p class="location-answer">Jirón Ayacucho 798, Magdalena del Mar, Lima, Perú</p>
                 <div class="container-iframe">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5517.391034383914!2d-77.07521408148807!3d-12.085800853653378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c909c6b21fd5%3A0xdb5250cd174ccd22!2sJir%C3%B3n%20Ayacucho%20798%2C%20Magdalena%20del%20Mar%2015086!5e0!3m2!1ses-419!2spe!4v1699222398369!5m2!1ses-419!2spe"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </section>
         </main>
