@@ -8,7 +8,7 @@ import {
 import {
     dataJsonArrayManagement,
     dataJsonObjectManagement,
-    localStorage
+    localStorage,
 } from "../utils/managers.js";
 
 const theProducts = new Products();
@@ -23,16 +23,17 @@ export function clickLogoTiaVicky() {
 }
 
 export function getDataFromJson() {
+    const dataPath = "src/data/";
     dataJsonObjectManagement(
         "#promos .carrousel",
-        "./data/offers.json",
+        dataPath + "offers.json",
         createCardTemplatePromos
     );
-    getAllProductsData("#productos>.products", "./data/menu.json");
-    fillAboutData("#nosotros>p.about-us", "./data/about.json");
+    getAllProductsData("#productos>.products", dataPath + "menu.json");
+    fillAboutData("#nosotros>p.about-us", dataPath + "about.json");
     dataJsonObjectManagement(
         "#posted-comments",
-        "./data/comments.json",
+        dataPath + "comments.json",
         createCommentTemplate
     );
 
@@ -52,10 +53,8 @@ export function getDataFromJson() {
 }
 
 export function productsInteractive() {
-    const filterElement = document.getElementById("filter-products");
-
     searchProducts();
-    clickToggleElementActive(filterElement);
+    clickToggleElementActive();
     showSelectedFilters();
     showAllFilters();
     filterProducts();
@@ -78,13 +77,14 @@ export function productsInteractive() {
         });
     }
 
-    function clickToggleElementActive(element) {
+    function clickToggleElementActive() {
+        const element = document.getElementById("filter-products");
         element.addEventListener("click", () => {
-            let currentClass = filterElement.classList[1];
+            let currentClass = element.classList[2];
             if (currentClass === "active") {
-                filterElement.classList.replace("active", "inactive");
+                element.classList.replace("active", "inactive");
             } else {
-                filterElement.classList.replace("inactive", "active");
+                element.classList.replace("inactive", "active");
             }
         });
     }

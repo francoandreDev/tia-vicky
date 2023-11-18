@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tienda Virtual de Comida Rápida">
     <meta name="keywords" content="Comida Comer Pedir Consumir Comprar Pollo Broaster Frito Papas Refrescos Gaseosas">
+    <!-- ! logo -->
     <link rel="shortcut icon" href="./assets/icon/icon.jpg" type="image/jpg">
+    <!-- ! logo -->
     <title>Tía Vicky</title>
+    <!-- ! google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap"
@@ -17,9 +20,20 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;700&display=swap"
             rel="stylesheet">
     </noscript>
-    <link rel="stylesheet" href="./styles.css">
-    <script type="module" src="./main.js" defer></script>
+    <!-- ! google fonts -->
+    <!-- ! styles -->
+    <link rel="stylesheet" href="./src/styles/normalize/normalize.css">
+    <link rel="stylesheet" href="./src/styles/app/app.css">
+    <link rel="stylesheet" href="./src/styles/home/home.css">
+    <link rel="stylesheet" href="./src/styles/user/user.css">
+    <link rel="stylesheet" href="./src/styles/cart/cart.css">
+    <!-- ! styles -->
+    <!-- ! js -->
+    <script type="module" src="./src/js/main.js" defer></script>
+    <!-- ! js -->
+    <!-- ! icon library -->
     <script src="https://kit.fontawesome.com/e00d06d5d7.js"></script>
+    <!-- ! icon library -->
 </head>
 
 <body>
@@ -43,7 +57,7 @@
         </nav>
         <main>
             <header class="bg-accent">
-                <img src="./assets/images/banner.jpg" alt="Banner image" class="banner-image">
+                <img src="./src/assets/images/banner.jpg" alt="Banner image" class="banner-image">
                 <p class="slogan">
                     <span>Tu antojo</span>
                     <span class="bigger-text">Nuestra</span>
@@ -113,7 +127,7 @@
             <section id="nosotros" class="bg-accent">
                 <h2>Sobre Nosotros</h2>
                 <div class="wrapper-image">
-                    <img src="./assets/images/nosotros.png" alt="imagen de tienda">
+                    <img src="./src/assets/images/nosotros.png" alt="imagen de tienda">
                 </div>
                 <!-- * js fill this using data function -->
                 <p class="about-us"></p>

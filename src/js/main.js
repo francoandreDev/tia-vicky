@@ -2,7 +2,7 @@ import {
     clickLogoTiaVicky,
     getDataFromJson,
     productsInteractive,
-} from "./js/functions/pages/homePage.js";
+} from "./functions/pages/homePage.js";
 
 clickLogoTiaVicky();
 getDataFromJson();

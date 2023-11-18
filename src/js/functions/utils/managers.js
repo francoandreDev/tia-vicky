@@ -31,4 +31,4 @@ export function dataJsonArrayManagement(query, jsonPath) {
         .catch((err) => console.error(err));
 }
 
-export const {localStorage} = window
+export const { localStorage } = window;
