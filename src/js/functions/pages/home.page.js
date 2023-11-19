@@ -15,7 +15,7 @@ import {
     getLocalStorageProperty,
 } from "../utils/managers.js";
 
-import { shopProducts } from "../utils/global-variables.js";
+import { dataPath, shopProducts } from "../utils/global-variables.js";
 
 import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 
@@ -28,11 +28,10 @@ export function clickLogoTiaVicky() {
 }
 
 export function getDataFromJson() {
-    const rootDataPath = "src/data/";
-    getAllPromosData("#promos .carrousel", rootDataPath + "offers.json");
-    getAllProductsData("#productos>.products", rootDataPath + "menu.json");
-    getAllAboutData("#nosotros>p.about-us", rootDataPath + "about.json");
-    getAllCommentsPublished("#posted-comments", rootDataPath + "comments.json");
+    getAllPromosData("#promos .carrousel", dataPath + "offers.json");
+    getAllProductsData("#productos>.products", dataPath + "menu.json");
+    getAllAboutData("#nosotros>p.about-us", dataPath + "about.json");
+    getAllCommentsPublished("#posted-comments", dataPath + "comments.json");
 
     function getAllPromosData(query, jsonPath) {
         dataJsonObjectManagement(query, jsonPath, createCardTemplatePromos);

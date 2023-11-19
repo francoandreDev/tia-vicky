@@ -1,3 +1,4 @@
+import { ErrorShowDefault } from "../../classes/Errors.js";
 import { localStorage } from "./global-variables.js";
 import { fetchTemplate } from "./templates.js";
 
@@ -50,4 +51,19 @@ export function toggleClassElement(element, pos, ...values) {
     stateClass.current = element.classList[pos];
     stateClass.prev = stateClass.current === values[0] ? values[1] : values[0]; //? toggle logic
     element.classList.replace(stateClass.current, stateClass.prev);
+}
+
+export function showError(e) {
+    if (e instanceof ErrorShowDefault) alert(e.stack + "\n\nCausa: " + e.cause);
+    else console.error(e);
+    console.log(e.stack);
+}
+
+export function inputAudio(audio) {
+    audio.play()
+    setTimeout(() => {audio.pause()}, 200)
+}
+
+export function clickAudio(audio) {
+    audio.play();
 }
