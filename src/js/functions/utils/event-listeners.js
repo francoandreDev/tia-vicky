@@ -21,7 +21,7 @@ export function addInputEvent(element, fn) {
     const typingAudio = new Audio(soundsPath + "typing-hard.wav");
     element.addEventListener(
         "input",
-        (e) => {
+         (e) => {
             fn(e);
             inputAudio(typingAudio);
         },

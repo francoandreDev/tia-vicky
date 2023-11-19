@@ -1,4 +1,3 @@
-import { ErrorShowDefault } from "./classes/Errors.js";
 import {
     clickLogoTiaVicky,
     getDataFromJson,
@@ -11,11 +10,6 @@ main();
 function main() {
     try {
         executeJSHomePage();
-        throw new ErrorShowDefault(
-            "No te preocupes, solo estoy probando, welcome",
-            "error intencionado",
-            "TestError"
-        );
     } catch (err) {
         showError(err);
     }

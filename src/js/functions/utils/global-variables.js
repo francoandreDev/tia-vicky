@@ -6,4 +6,4 @@ export const soundsPath = "src/assets/sounds/";
 export const dataPath = "src/data/";
 
 export const shopProducts = new Products();
-export const cardProducts = new Products();
+export const cartProducts = new Products();

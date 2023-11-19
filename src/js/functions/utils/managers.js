@@ -14,7 +14,7 @@ export function dataJsonObjectManagement(
         res.forEach((props) => {
             if (name !== "") setLocalStorageProperty(name, res);
             const template = createTemplate(props);
-            element.appendChild(template);
+            appendElement(element, template)
         });
     });
 }

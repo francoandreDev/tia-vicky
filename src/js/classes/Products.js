@@ -4,7 +4,7 @@ export class Products {
     #filterProducts = [];
     #listFilters = [];
 
-    constructor(products) {
+    constructor() {
         this.listAllFilters = [
             "Eliminar Filtros",
             "Hamburguesas",
