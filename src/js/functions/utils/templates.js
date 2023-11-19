@@ -8,7 +8,7 @@ export function createCardTemplatePromos(props) {
         <h3 class="promo-name text-center"><b>${name}</b></h3>
         <!-- content card -->
         <div class="wrapper-image">
-            <img src=${image} alt="Imagen de ${name}">
+            <img src=${image} alt="Imagen de ${name} loading="lazy">
         </div>
         <!-- content card -->
         <p class="description text-center text-balance">${description}</p>
@@ -36,7 +36,7 @@ export function createProductTemplate(props) {
     let showPrice = price.toString().endsWith(".5") ? price + "0" : price;
     productElement.innerHTML = `
         <div class="wrapper-image">
-        <img src=${image} alt= "Imagen de " ${name}>
+        <img src=${image} loading="lazy" alt= "Imagen de " ${name}>
         <!-- pricing tag -->
         <div class="tag bg-default">
             <p class="price">S/. ${showPrice}</p>
