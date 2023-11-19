@@ -22,11 +22,11 @@
     </noscript>
     <!-- ! google fonts -->
     <!-- ! styles -->
-    <link rel="stylesheet" href="./src/styles/normalize/normalize.css">
-    <link rel="stylesheet" href="./src/styles/app/app.css">
-    <link rel="stylesheet" href="./src/styles/home/home.css">
-    <link rel="stylesheet" href="./src/styles/user/user.css">
-    <link rel="stylesheet" href="./src/styles/cart/cart.css">
+    <link rel="stylesheet" href="./src/styles/normalize.css">
+    <link rel="stylesheet" href="./src/styles/general.css">
+    <link rel="stylesheet" href="./src/styles/pages/home.css">
+    <link rel="stylesheet" href="./src/styles/pages/user.css">
+    <link rel="stylesheet" href="./src/styles/pages/cart.css">
     <!-- ! styles -->
     <!-- ! js -->
     <script type="module" src="./src/js/main.js" defer></script>
@@ -43,12 +43,28 @@
                 <span class="name">Tía</span>
                 <span class="name">Vicky</span>
             </h1>
+            <input type="checkbox" aria-label="ck-list-nav" id="ck-list_input">
             <ul>
-                <li><a href="#promos">Promos</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Sobre Nosotros</a></li>
-                <li><a href="#opiniones">Opiniones</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#promos">
+                        <img src="./src/assets/icon/promo.svg" alt="promos-icon-nav" style="width: 2rem; scale: 2">
+                        <span>Promos</span>
+                    </a></li>
+                <li><a href="#productos">
+                        <img src="./src/assets/icon/food.svg" alt="food-icon-nav">
+                        <span>Productos</span>
+                    </a></li>
+                <li><a href="#nosotros">
+                        <img src="./src/assets/icon/about.svg" alt="about-icon-nav">
+                        <span>Sobre Nosotros</span>
+                    </a></li>
+                <li><a href="#opiniones">
+                        <img src="./src/assets/icon/comments.svg" alt="comments-icon-nav">
+                        <span>Opiniones</span>
+                    </a></li>
+                <li><a href="#contacto">
+                        <img src="./src/assets/icon/contact.svg" alt="contact-icon-nav">
+                        <span>Contacto</span>
+                    </a></li>
             </ul>
             <div class="interactive-zone">
                 <div id="user-icon"><i class="fa-solid fa-user"></i></div>

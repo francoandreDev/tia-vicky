@@ -2,16 +2,19 @@
 :root {
     --font-family-default: "Open Sans", sans-serif;
     --font-family-interactive: "Ubuntu", sans-serif;
+
     --font-weight-lighter: 300;
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    --color-opacity-accent: #e6b14280;
-    --color-accent: #e6b142;
-    --color-dark-accent: #a68d65;
-    --color-primary: #fff8ea;
-    --color-secondary: #402e32;
-    --color-subtle-error: #ff0039;
+
+    --color-nav-bar: hsla(40, 100%, 96%, 0.9);
+    --color-opacity-accent: hsla(41, 77%, 58%, 0.502);
+    --color-accent: hsl(41, 77%, 58%);
+    --color-dark-accent: hsl(37, 27%, 52%);
+    --color-primary: hsl(40, 100%, 96%);
+    --color-secondary: hsl(347, 16%, 22%);
+    --color-subtle-error: hsl(347, 100%, 50%);
 }
 /* global variables */
 

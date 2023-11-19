@@ -49,12 +49,13 @@
 
 /* styling nav here */
 #nav {
+    padding: 0 3rem 0 3.5rem;
     position: fixed;
     inset: 0;
     z-index: 5;
     max-height: 4rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--color-primary);
     backdrop-filter: blur(5px);
@@ -77,7 +78,16 @@
 
     & ul {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         gap: 5rem;
+    }
+
+    & a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     & .interactive-zone {
@@ -85,6 +95,72 @@
         gap: 1rem;
         font-size: 1.3rem;
         cursor: help;
+    }
+}
+
+@media only screen and (max-width: 743px) {
+    & #ck-list_input {
+        position: absolute;
+        inset: 0;
+        z-index: 6;
+        opacity: 0;
+        & ~ ul {
+            justify-content: space-evenly;
+            gap: 0;
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            z-index: 5;
+            width: 100vw;
+            height: calc(100vh - 4rem);
+            transition: translate 1s ease-in-out;
+            background-color: var(--color-nav-bar);
+            backdrop-filter: blur(5px);
+        }
+        &:not(:checked) ~ ul {
+            translate: 0 0;
+
+            & li {
+                transition: translate 0.7s linear;
+
+                &:has(a:hover) {
+                    translate: 1rem;
+                }
+            }
+        }
+        &:checked ~ ul {
+            translate: -100% 0;
+        }
+    }
+}
+
+@media only screen and (min-width: 744px) {
+    #nav {
+        justify-content: space-around;
+        gap: 5rem;
+        & input[type="checkbox"] {
+            display: none;
+        }
+        & ul {
+            flex-direction: row;
+            & a {
+                & img {
+                    height: 1.5rem;
+                }
+                & span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #nav {
+        justify-content: space-evenly;
+        & ul a span {
+            display: block;
+        }
     }
 }
 /* styling nav here */

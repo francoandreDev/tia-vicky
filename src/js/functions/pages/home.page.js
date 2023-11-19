@@ -1,25 +1,28 @@
-import { Products } from "../../classes/Products.js";
 import {
     createCardTemplatePromos,
     createCommentTemplate,
+    createListAllFilterTemplate,
+    createListSelectedFiltersTemplate,
     createProductTemplate,
 } from "../utils/templates.js";
 
 import {
     dataJsonArrayManagement,
     dataJsonObjectManagement,
-    localStorage,
+    getLocalStorageProperty,
+    insertElement,
+    resetInnerHTML,
 } from "../utils/managers.js";
 
-const theProducts = new Products();
+import { shopProducts } from "../utils/global-variables.js";
+
+import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 
 export function clickLogoTiaVicky() {
-    document.querySelector("h1.logo").addEventListener("click", () => {
-        goToTop();
-    });
-    function goToTop() {
+    const logoElement = document.querySelector("h1.logo");
+    addClickEvent(logoElement, () => {
         window.scroll({ top: 0, left: 0, behavior: "smooth" });
-    }
+    });
 }
 
 export function getDataFromJson() {
@@ -44,7 +47,7 @@ export function getDataFromJson() {
             createProductTemplate,
             "products"
         );
-        theProducts.setProducts(JSON.parse(localStorage.getItem("products")));
+        shopProducts.setProducts(getLocalStorageProperty("products"));
     }
 
     function fillAboutData(query, jsonPath) {
@@ -64,68 +67,61 @@ export function productsInteractive() {
             "#productos>.products"
         );
         const input = document.querySelector("#search-product>input");
-        input.addEventListener("input", (e) => {
+        addInputEvent(input, (e) => {
             let search = e.target.value;
             //? delete the previous data
-            allProductsElement.innerHTML = "";
-            theProducts.resetSearch();
-            theProducts.getProductsByName(search);
-            theProducts.showProducts.forEach((product) => {
+            resetInnerHTML(allProductsElement);
+            shopProducts.resetSearch();
+            shopProducts.getProductsByName(search);
+            shopProducts.showProducts.forEach((product) => {
                 const productElement = createProductTemplate(product);
-                allProductsElement.appendChild(productElement);
+                insertElement(allProductsElement, productElement);
             });
         });
     }
 
     function clickToggleElementActive() {
         const element = document.getElementById("filter-products");
-        element.addEventListener("click", () => {
+        addClickEvent(element, () => {
             let currentClass = element.classList[2];
-            if (currentClass === "active") {
-                element.classList.replace("active", "inactive");
-            } else {
-                element.classList.replace("inactive", "active");
-            }
+            let olderClass = currentClass === "active" ? "inactive" : "active"
+            element.classList.replace(currentClass, olderClass);
         });
     }
 
     function showSelectedFilters() {
-        const activeFilters = theProducts.getListFilters();
+        const activeFilters = shopProducts.getListFilters();
         const selectedFiltersElement =
             document.getElementById("selected-filters");
-        // ? reset content
-        selectedFiltersElement.innerHTML = "";
+
+        resetInnerHTML(selectedFiltersElement);
+
         activeFilters.forEach((filterName) => {
-            const showDefault = document.createElement("li");
-            showDefault.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-            showDefault.classList.add("filter", "bg-default");
-            if (activeFilters.length === 0) {
-                showDefault.id = "default-filter";
-            } else {
-                showDefault.innerHTML += `<p>${filterName}</p>`;
-            }
-            showDefault.addEventListener("click", () => {
-                theProducts.removeFilter("category", filterName);
-                showSelectedFilters();
+            const showFilter = createListSelectedFiltersTemplate(
+                activeFilters,
+                filterName
+            );
+
+            addClickEvent(showFilter, () => {
                 const parent = document.querySelector("#productos>.products");
-                fillProductsByCategory(parent);
+                removeCategoryFromFilter(parent, shopProducts, filterName);
             });
-            selectedFiltersElement.appendChild(showDefault);
+
+            insertElement(selectedFiltersElement, showFilter);
         });
+
+        function removeCategoryFromFilter(parent, element, text) {
+            element.removeFilter("category", text);
+            showSelectedFilters();
+            fillProductsByCategory(parent);
+        }
     }
 
     function showAllFilters() {
         const listFiltersElement = document.getElementById("list-filters");
-        // ? reset content
-        listFiltersElement.innerHTML = "";
-
-        theProducts.listAllFilters.forEach((filter) => {
-            const showFilter = document.createElement("li");
-            showFilter.classList.add("filter", "bg-default");
-            showFilter.innerHTML = `
-                <p>${filter}</p>
-                `;
-            listFiltersElement.appendChild(showFilter);
+        resetInnerHTML(listFiltersElement);
+        shopProducts.listAllFilters.forEach((filter) => {
+            createListAllFilterTemplate(listFiltersElement, filter);
         });
     }
 
@@ -133,11 +129,11 @@ export function productsInteractive() {
         const allFiltersArea = document.getElementById("list-filters");
         const allFiltersElements = [...allFiltersArea.children];
         allFiltersElements.forEach((filterElement) => {
-            filterElement.addEventListener("click", () => {
+            addClickEvent(filterElement, () => {
                 // click x in selected filters // delete filters
                 const newFilter = filterElement.querySelector("p").textContent;
-                theProducts.addProductsByFilter("category", [
-                    ...theProducts.getListFilters(),
+                shopProducts.addProductsByFilter("category", [
+                    ...shopProducts.getListFilters(),
                     newFilter,
                 ]);
                 // ? update
@@ -150,10 +146,10 @@ export function productsInteractive() {
     }
 
     function fillProductsByCategory(parent) {
-        parent.innerHTML = "";
-        theProducts.showProducts.forEach((product) => {
+        resetInnerHTML(parent);
+        shopProducts.showProducts.forEach((product) => {
             const productElement = createProductTemplate(product);
-            parent.appendChild(productElement);
+            insertElement(parent, productElement);
         });
     }
 }

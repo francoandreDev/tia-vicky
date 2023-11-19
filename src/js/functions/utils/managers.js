@@ -1,3 +1,5 @@
+import { localStorage } from "./global-variables.js";
+
 export function dataJsonObjectManagement(
     query,
     jsonPath,
@@ -9,8 +11,7 @@ export function dataJsonObjectManagement(
         .then((res) => res.json())
         .then((res) => {
             res.forEach((props) => {
-                if (name !== "")
-                    localStorage.setItem(name, JSON.stringify(res));
+                if (name !== "") setLocalStorageProperty(name, res);
                 const template = createTemplate(props);
                 element.appendChild(template);
             });
@@ -31,4 +32,18 @@ export function dataJsonArrayManagement(query, jsonPath) {
         .catch((err) => console.error(err));
 }
 
-export const { localStorage } = window;
+export function setLocalStorageProperty(propertyName, value) {
+    localStorage.setItem(propertyName, JSON.stringify(value));
+}
+
+export function getLocalStorageProperty(propertyName) {
+    return JSON.parse(localStorage.getItem(propertyName));
+}
+
+export function resetInnerHTML(element) {
+    element.innerHTML = "";
+}
+
+export function insertElement(parent, element) {
+    parent.appendChild(element);
+}

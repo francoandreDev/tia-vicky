@@ -1,3 +1,5 @@
+import { insertElement } from "./managers.js";
+
 export function createCardTemplatePromos(props) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -64,4 +66,25 @@ export function createCommentTemplate(props) {
         <p class="comment"><b>${comment}</b></p>
     `;
     return cardPublished;
+}
+
+export function createListSelectedFiltersTemplate(activeFilters, text) {
+    const listElement = document.createElement("li");
+    listElement.classList.add("filter", "bg-default");
+    listElement.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    if (activeFilters.length === 0) {
+        listElement.id = "default-filter";
+    } else {
+        listElement.innerHTML += `<p>${text}</p>`;
+    }
+    return listElement;
+}
+
+export function createListAllFilterTemplate(parent, text) {
+    const showFilter = document.createElement("li");
+    showFilter.classList.add("filter", "bg-default");
+    showFilter.innerHTML = `
+        <p>${text}</p>
+    `;
+    insertElement(parent, showFilter);
 }
