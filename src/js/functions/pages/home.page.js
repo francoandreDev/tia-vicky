@@ -9,9 +9,10 @@ import {
 import {
     dataJsonArrayManagement,
     dataJsonObjectManagement,
-    getLocalStorageProperty,
-    insertElement,
+    appendElement,
     resetInnerHTML,
+    toggleClassElement,
+    getLocalStorageProperty,
 } from "../utils/managers.js";
 
 import { shopProducts } from "../utils/global-variables.js";
@@ -20,25 +21,22 @@ import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 
 export function clickLogoTiaVicky() {
     const logoElement = document.querySelector("h1.logo");
+    const scrollConfig = { top: 0, left: 0, behavior: "smooth" };
     addClickEvent(logoElement, () => {
-        window.scroll({ top: 0, left: 0, behavior: "smooth" });
+        window.scroll(scrollConfig);
     });
 }
 
 export function getDataFromJson() {
-    const dataPath = "src/data/";
-    dataJsonObjectManagement(
-        "#promos .carrousel",
-        dataPath + "offers.json",
-        createCardTemplatePromos
-    );
-    getAllProductsData("#productos>.products", dataPath + "menu.json");
-    fillAboutData("#nosotros>p.about-us", dataPath + "about.json");
-    dataJsonObjectManagement(
-        "#posted-comments",
-        dataPath + "comments.json",
-        createCommentTemplate
-    );
+    const rootDataPath = "src/data/";
+    getAllPromosData("#promos .carrousel", rootDataPath + "offers.json");
+    getAllProductsData("#productos>.products", rootDataPath + "menu.json");
+    getAllAboutData("#nosotros>p.about-us", rootDataPath + "about.json");
+    getAllCommentsPublished("#posted-comments", rootDataPath + "comments.json");
+
+    function getAllPromosData(query, jsonPath) {
+        dataJsonObjectManagement(query, jsonPath, createCardTemplatePromos);
+    }
 
     function getAllProductsData(query, jsonPath) {
         dataJsonObjectManagement(
@@ -50,14 +48,18 @@ export function getDataFromJson() {
         shopProducts.setProducts(getLocalStorageProperty("products"));
     }
 
-    function fillAboutData(query, jsonPath) {
+    function getAllAboutData(query, jsonPath) {
         dataJsonArrayManagement(query, jsonPath);
+    }
+
+    function getAllCommentsPublished(query, jsonPath) {
+        dataJsonObjectManagement(query, jsonPath, createCommentTemplate);
     }
 }
 
 export function productsInteractive() {
     searchProducts();
-    clickToggleElementActive();
+    clickToggleShowFilters();
     showSelectedFilters();
     showAllFilters();
     filterProducts();
@@ -68,25 +70,21 @@ export function productsInteractive() {
         );
         const input = document.querySelector("#search-product>input");
         addInputEvent(input, (e) => {
-            let search = e.target.value;
             //? delete the previous data
             resetInnerHTML(allProductsElement);
-            shopProducts.resetSearch();
-            shopProducts.getProductsByName(search);
+            shopProducts.getProductsByName(e.target.value);
             shopProducts.showProducts.forEach((product) => {
                 const productElement = createProductTemplate(product);
-                insertElement(allProductsElement, productElement);
+                appendElement(allProductsElement, productElement);
             });
         });
     }
 
-    function clickToggleElementActive() {
+    function clickToggleShowFilters() {
         const element = document.getElementById("filter-products");
-        addClickEvent(element, () => {
-            let currentClass = element.classList[2];
-            let olderClass = currentClass === "active" ? "inactive" : "active"
-            element.classList.replace(currentClass, olderClass);
-        });
+        addClickEvent(element, () =>
+            toggleClassElement(element, 2, "active", "inactive")
+        );
     }
 
     function showSelectedFilters() {
@@ -107,7 +105,7 @@ export function productsInteractive() {
                 removeCategoryFromFilter(parent, shopProducts, filterName);
             });
 
-            insertElement(selectedFiltersElement, showFilter);
+            appendElement(selectedFiltersElement, showFilter);
         });
 
         function removeCategoryFromFilter(parent, element, text) {
@@ -126,21 +124,17 @@ export function productsInteractive() {
     }
 
     function filterProducts() {
-        const allFiltersArea = document.getElementById("list-filters");
-        const allFiltersElements = [...allFiltersArea.children];
+        const parent = document.querySelector("#productos>.products");
+        const allFiltersElements = [
+            ...document.querySelectorAll("#list-filters>*"),
+        ];
         allFiltersElements.forEach((filterElement) => {
             addClickEvent(filterElement, () => {
-                // click x in selected filters // delete filters
                 const newFilter = filterElement.querySelector("p").textContent;
-                shopProducts.addProductsByFilter("category", [
-                    ...shopProducts.getListFilters(),
-                    newFilter,
-                ]);
+                shopProducts.addNewFilter("category", newFilter);
                 // ? update
                 showSelectedFilters();
-                fillProductsByCategory(
-                    document.querySelector("#productos>.products")
-                );
+                fillProductsByCategory(parent);
             });
         });
     }
@@ -149,7 +143,7 @@ export function productsInteractive() {
         resetInnerHTML(parent);
         shopProducts.showProducts.forEach((product) => {
             const productElement = createProductTemplate(product);
-            insertElement(parent, productElement);
+            appendElement(parent, productElement);
         });
     }
 }

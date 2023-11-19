@@ -1,4 +1,11 @@
-import { insertElement } from "./managers.js";
+import { appendElement } from "./managers.js";
+
+export function fetchTemplate(path, fn) {
+    fetch(path)
+        .then((res) => res.json())
+        .then((res) => fn(res))
+        .catch((e) => console.error(e));
+}
 
 export function createCardTemplatePromos(props) {
     const card = document.createElement("div");
@@ -86,5 +93,5 @@ export function createListAllFilterTemplate(parent, text) {
     showFilter.innerHTML = `
         <p>${text}</p>
     `;
-    insertElement(parent, showFilter);
+    appendElement(parent, showFilter);
 }

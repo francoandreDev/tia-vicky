@@ -4,7 +4,7 @@ export class Products {
     #filterProducts = [];
     #listFilters = [];
 
-    constructor() {
+    constructor(products) {
         this.listAllFilters = [
             "Eliminar Filtros",
             "Hamburguesas",
@@ -52,10 +52,17 @@ export class Products {
             (filter) => filter !== filterName
         );
 
-        this.addProductsByFilter(type, this.#listFilters);
+        this.#addProductsByFilter(type, this.#listFilters);
+    }
+
+    addNewFilter(type, filterName) {
+        if (this.#listFilters.includes(filterName)) return;
+        this.#listFilters.push(filterName);
+        this.#addProductsByFilter(type, this.#listFilters);
     }
 
     getProductsByName(name) {
+        this.resetSearch();
         this.#searchProducts = this.#products.filter((product) =>
             // ! using toLowerCase method because the search input user may not be strict equal in sense of case sensitive to match something as it's expect.
             product.name.toLowerCase().includes(name.toLowerCase())
@@ -63,7 +70,7 @@ export class Products {
         this.#updateListProducts();
     }
 
-    addProductsByFilter(type, values) {
+    #addProductsByFilter(type, values) {
         if (values.includes("Eliminar Filtros")) this.#filterProducts = [];
         else {
             switch (type) {
