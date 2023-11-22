@@ -155,6 +155,10 @@ h2,
     text-wrap: balance;
 }
 
+.text-pretty {
+    text-wrap: pretty;
+}
+
 .rounded-borders {
     border-radius: 0.5rem;
 }

@@ -14,7 +14,7 @@ export function dataJsonObjectManagement(
         res.forEach((props) => {
             if (name !== "") setLocalStorageProperty(name, res);
             const template = createTemplate(props);
-            appendElement(element, template)
+            appendElement(element, template);
         });
     });
 }
@@ -60,8 +60,13 @@ export function showError(e) {
 }
 
 export function inputAudio(audio) {
-    audio.play()
-    setTimeout(() => {audio.pause()}, 200)
+    let ms = 150;
+    audio.play();
+    audio.volume = 1;
+    audio.currentTime = 0.65;
+    setTimeout(() => {
+        audio.pause();
+    }, ms);
 }
 
 export function clickAudio(audio) {

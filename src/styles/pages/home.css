@@ -269,15 +269,14 @@ img {
         margin: 5rem 0 3rem 0;
     }
 
-    & .carrousel {
-        padding: 2rem 1rem;
+    & .show-promos {
+        margin-top: 6rem;
+        padding: 2rem;
         display: flex;
         justify-content: center;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         position: relative;
-        scroll-snap-type: x mandatory;
-        scroll-snap-align: center;
-        gap: 20vw;
+        gap: 5rem;
 
         & .card {
             width: clamp(5rem, 100%, 20rem);
@@ -322,15 +321,10 @@ img {
             }
         }
     }
-
-    & .controller-zone {
-        display: flex;
-        justify-content: space-evenly;
-    }
 }
 
 @media only screen and (min-width: 744px) {
-    #promos .carrousel .card .offer {
+    #promos .show-promos .card .offer {
         scale: 1.5;
     }
 }
@@ -492,7 +486,7 @@ img {
         gap: 1.5rem;
     }
 
-    & :where(.products, .carrousel) .card {
+    & :where(.products, .show-promos) .card {
         box-shadow: 0 0 0.5px 0.25px black;
         padding: 0.5rem 1rem 0.5rem 1rem;
         border-radius: 1rem;
@@ -810,6 +804,17 @@ img {
                 margin-left: 0.5rem;
                 font-size: 1.5rem;
                 opacity: 0.7;
+
+                & .male i {
+                    filter: drop-shadow(0 0 1.5px rgb(0, 38, 255));
+                }
+                & .female i {
+                    filter: drop-shadow(0 0 1.5px rgb(255, 0, 115));
+                }
+
+                & :where(.male, .female) i {
+                    color: whitesmoke;
+                }
             }
 
             & .interactive-zone {
@@ -822,7 +827,7 @@ img {
                 & button {
                     border-radius: 5px;
                     color: inherit;
-                    padding: 0 1rem;
+                    padding: 0.2rem 1rem;
                 }
             }
         }
@@ -875,6 +880,10 @@ img {
         max-width: clamp(1100px, 60vw, 1440px);
         padding: clamp(1.5rem, calc(2rem - 1vw), 1.8rem);
 
+        & .comment {
+            padding-bottom: 0.8rem;
+        }
+
         & .time {
             translate: 0.4rem -0.7rem;
         }
@@ -908,6 +917,7 @@ img {
     align-items: center;
     gap: 1.5rem 2rem;
     margin-bottom: 5rem;
+    padding: 0 1rem;
 
     & .card.published {
         padding-top: 1.2rem;

@@ -88,3 +88,10 @@ En resumen, escribir código en inglés no solo es una práctica estándar en la
     -   [ ] Destacadas. / Featured.
     -   [ ] Recientes. / Recent.
 -   [ ] Agregar lógica de compra. / Add purchase logic.
+
+### Lista de tareas de esta semana / To-Do List this week
+
+-   Navbar resaltar último enlace activo
+-   Carrito de Compras + Lógica de añadir productos y promos
+-   Usuario: Datos pre-definidos y borrar registro solo iniciar una sesión de demo.
+-   Ventana Error Sesión Usuario: Adicional si alcanza el tiempo.

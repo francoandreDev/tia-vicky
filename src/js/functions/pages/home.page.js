@@ -28,7 +28,7 @@ export function clickLogoTiaVicky() {
 }
 
 export function getDataFromJson() {
-    getAllPromosData("#promos .carrousel", dataPath + "offers.json");
+    getAllPromosData("#promos .show-promos", dataPath + "offers.json");
     getAllProductsData("#productos>.products", dataPath + "menu.json");
     getAllAboutData("#nosotros>p.about-us", dataPath + "about.json");
     getAllCommentsPublished("#posted-comments", dataPath + "comments.json");

@@ -12,13 +12,13 @@ export function createCardTemplatePromos(props) {
     card.classList.add("card");
     const { name, image, description, prices, offer, time, stock } = props;
     card.innerHTML = `
-        <h3 class="promo-name text-center"><b>${name}</b></h3>
+        <h3 class="promo-name text-center text-balance"><b>${name}</b></h3>
         <!-- content card -->
         <div class="wrapper-image">
             <img src=${image} alt="Imagen de ${name} loading="lazy">
         </div>
         <!-- content card -->
-        <p class="description text-center text-balance">${description}</p>
+        <p class="description text-center text-pretty">${description}</p>
         <!-- pricing tag -->
         <div class="tag bg-default">
             <p class="price old">${prices.normal}</p>
@@ -66,8 +66,13 @@ export function createCommentTemplate(props) {
     const parentClasses = ["card", "published", "rounded-borders", "bg-accent"];
     cardPublished.classList.add(...parentClasses);
     const { gender, name, time, comment } = props;
+    const imagePath = `/src/assets/images/${
+        gender === "Male" ? "Male.png" : "Female.png"
+    }`;
     cardPublished.innerHTML = `
-        <div class="circle bg-default ${gender.toLowerCase()}"></div>
+        <div class="circle bg-default ${gender.toLowerCase()}">
+            <img src="${imagePath}" alt="${gender} image" loading="lazy" style="width: 100%; height: 100%;">
+        </div>
         <p class="name">${name}</p>
         <p class="time">${time}</p>
         <p class="comment"><b>${comment}</b></p>
