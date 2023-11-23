@@ -824,7 +824,7 @@ img {
 
 /* styling opiniones */
 #opiniones {
-    padding: 4rem 0;
+    padding: 4rem 3rem;
 
     & h2 {
         margin: 5rem 0;
@@ -844,7 +844,7 @@ img {
         border-radius: 4px;
 
         &.new {
-            width: 90%;
+            width: 75vw;
             margin-top: 2rem;
             margin-bottom: 8rem;
             display: grid;
