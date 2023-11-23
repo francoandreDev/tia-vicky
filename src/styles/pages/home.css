@@ -1,5 +1,16 @@
 /* waves */
+@keyframes move-wave {
+    from {
+        translate: -20%;
+    }
+    to {
+        translate: 0;
+    }
+}
 .separator-wave {
+    min-width: 400%;
+    animation: move-wave ease alternate both;
+    animation-timeline: view(auto);
     height: 7rem;
     background-size: contain;
     background-position: center;
@@ -10,6 +21,7 @@
     }
 
     &:nth-of-type(2) {
+        animation-direction: alternate-reverse;
         background-image: url("../../assets/images/Vector2.png");
     }
 
@@ -329,15 +341,16 @@ img {
     }
 }
 
-:where(#search-product, #filter-products) {
+:is(#search-product, #filter-products) {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.2rem;
     padding: 0.3rem 2rem;
-    margin: 1rem clamp(1rem, 80%, 10rem);
+    margin: 1rem auto;
     color: var(--color-secondary);
+    max-width: 80vw;
 
     & > * {
         color: inherit;
@@ -349,6 +362,12 @@ img {
         transform: translateY(-50%);
         cursor: pointer;
         padding: 0.188rem;
+    }
+}
+
+@media only screen and (max-width: 743px) {
+    :is(#search-product, #filter-products) {
+        max-width: 70vw;
     }
 }
 
