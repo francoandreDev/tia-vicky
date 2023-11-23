@@ -74,6 +74,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: clip;
 
     & > *:not(header) {
         width: 100%;
