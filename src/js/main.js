@@ -1,4 +1,5 @@
 import {
+    addClickOnMapImage,
     clickLogoTiaVicky,
     getDataFromJson,
     productsInteractive,
@@ -18,5 +19,6 @@ function main() {
         clickLogoTiaVicky();
         getDataFromJson();
         productsInteractive();
+        addClickOnMapImage();
     }
 }

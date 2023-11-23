@@ -129,19 +129,19 @@
             background-color: var(--color-nav-bar);
             backdrop-filter: blur(5px);
         }
-        &:not(:checked) ~ ul {
-            translate: 0 0;
-
-            & li {
-                transition: translate 0.7s linear;
-
-                &:has(a:hover) {
-                    translate: 1rem;
-                }
-            }
-        }
         &:checked ~ ul {
+            translate: 0 0;
+        }
+        &:not(:checked) ~ ul {
             translate: -100% 0;
+        }
+
+        & ul li {
+            transition: translate 0.7s linear;
+
+            &:has(a:hover) {
+                translate: 1rem;
+            }
         }
     }
 }
@@ -996,6 +996,12 @@ img {
             align-items: center;
             gap: 0.5rem;
         }
+    }
+
+    & .container-iframe {
+        margin: 1rem auto;
+        margin-bottom: 3rem;
+        max-width: 90vw;
     }
 }
 

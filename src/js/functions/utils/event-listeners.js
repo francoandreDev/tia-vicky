@@ -9,7 +9,7 @@ export function addClickEvent(
     const audio = new Audio(sound);
     element.addEventListener(
         "click",
-        () => {
+        (e) => {
             fn();
             clickAudio(audio);
         },
@@ -21,7 +21,7 @@ export function addInputEvent(element, fn) {
     const typingAudio = new Audio(soundsPath + "typing-hard.wav");
     element.addEventListener(
         "input",
-         (e) => {
+        (e) => {
             fn(e);
             inputAudio(typingAudio);
         },

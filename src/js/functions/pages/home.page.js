@@ -146,3 +146,12 @@ export function productsInteractive() {
         });
     }
 }
+
+export function addClickOnMapImage() {
+    const img = document.getElementById("iframe-maps");
+    if (img) {
+        addClickEvent(img, () => {
+            window.open("https://maps.app.goo.gl/W8hRJXZxTZBPSaj99");
+        });
+    }
+}
