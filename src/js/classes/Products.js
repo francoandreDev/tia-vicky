@@ -57,7 +57,8 @@ export class Products {
 
     addNewFilter(type, filterName) {
         if (this.#listFilters.includes(filterName)) return;
-        this.#listFilters.push(filterName);
+        if ("Eliminar Filtros" === filterName) this.#listFilters = [];
+        else this.#listFilters.push(filterName);
         this.#addProductsByFilter(type, this.#listFilters);
     }
 
@@ -71,16 +72,14 @@ export class Products {
     }
 
     #addProductsByFilter(type, values) {
-        if (values.includes("Eliminar Filtros")) this.#filterProducts = [];
-        else {
-            switch (type) {
-                case "category":
-                    this.#filterProducts = this.#products.filter((product) => {
-                        return values.includes(product.category);
-                    });
-                    break;
-            }
+        switch (type) {
+            case "category":
+                this.#filterProducts = this.#products.filter((product) => {
+                    return values.includes(product.category);
+                });
+                break;
         }
+
         this.#updateListProducts();
     }
 

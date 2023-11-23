@@ -81,9 +81,9 @@ export function productsInteractive() {
 
     function clickToggleShowFilters() {
         const element = document.getElementById("filter-products");
-        addClickEvent(element, () =>
-            toggleClassElement(element, 2, "active", "inactive")
-        );
+        addClickEvent(element, (e) => {
+            toggleClassElement(element, 2, "active", "inactive");
+        });
     }
 
     function showSelectedFilters() {

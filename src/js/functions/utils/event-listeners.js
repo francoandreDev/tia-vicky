@@ -10,6 +10,7 @@ export function addClickEvent(
     element.addEventListener(
         "click",
         (e) => {
+            e.stopPropagation();
             fn();
             clickAudio(audio);
         },
