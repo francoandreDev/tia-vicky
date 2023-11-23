@@ -1,6 +1,7 @@
 import {
     addClickOnMapImage,
     clickLogoTiaVicky,
+    commentsInteractive,
     getDataFromJson,
     productsInteractive,
 } from "./functions/pages/home.page.js";
@@ -19,6 +20,7 @@ function main() {
         clickLogoTiaVicky();
         getDataFromJson();
         productsInteractive();
+        commentsInteractive();
         addClickOnMapImage();
     }
 }

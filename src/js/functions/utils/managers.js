@@ -1,5 +1,7 @@
 import { ErrorShowDefault } from "../../classes/Errors.js";
+import { addInputEvent } from "./event-listeners.js";
 import { localStorage } from "./global-variables.js";
+import { capitalizeString } from "./stringFunctions.js";
 import { fetchTemplate } from "./templates.js";
 
 export function dataJsonObjectManagement(
@@ -71,4 +73,13 @@ export function inputAudio(audio) {
 
 export function clickAudio(audio) {
     audio.play();
+}
+
+export function capitalizeTextInput(input) {
+    let numberLetters = 0;
+    addInputEvent(input, (e) => {
+        if (e.data === null && numberLetters > 0) numberLetters--;
+        if (e.data !== null) numberLetters++;
+        input.value = capitalizeString(input.value);
+    });
 }

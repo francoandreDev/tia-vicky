@@ -13,6 +13,7 @@ import {
     resetInnerHTML,
     toggleClassElement,
     getLocalStorageProperty,
+    capitalizeTextInput,
 } from "../utils/managers.js";
 
 import { dataPath, shopProducts } from "../utils/global-variables.js";
@@ -77,6 +78,7 @@ export function productsInteractive() {
                 appendElement(allProductsElement, productElement);
             });
         });
+        capitalizeTextInput(input);
     }
 
     function clickToggleShowFilters() {
@@ -145,6 +147,15 @@ export function productsInteractive() {
             appendElement(parent, productElement);
         });
     }
+}
+
+export function commentsInteractive() {
+    const [...inputsNewComment] = document.querySelectorAll(
+        "#opiniones .card.new input"
+    );
+    inputsNewComment.forEach((input) => {
+        capitalizeTextInput(input);
+    });
 }
 
 export function addClickOnMapImage() {
