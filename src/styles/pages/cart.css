@@ -1,0 +1,91 @@
+@keyframes appear-module {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes disappear-module {
+    from {
+        height: 100%;
+        opacity: 1;
+    }
+    to {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+#cart-module {
+    position: absolute;
+    top: 4rem;
+    z-index: 4;
+    width: 100vw;
+    background-color: rgba(0 0 0 / 0.9);
+    animation: appear-module 2s ease both;
+
+    &.remove {
+        animation: disappear-module 1s ease both;
+    }
+
+    & .window {
+        padding: 0 2rem;
+        height: inherit;
+        background-color: rgba(255 255 255 / 0.3);
+        border: 1px solid black;
+        backdrop-filter: blur(5px);
+        overflow-x: hidden;
+        padding-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & .window_section {
+            padding: 2rem 0;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            overflow-x: hidden;
+
+            &:nth-of-type(2n + 1) {
+                background-color: var(--color-primary);
+            }
+
+            &:nth-of-type(2n) {
+                background-color: var(--color-accent);
+            }
+
+            & .interactive-zone {
+                display: flex;
+                justify-content: space-between;
+                width: 75%;
+
+                & button {
+                    padding: 0.4rem 1rem;
+                    border: 0;
+                    &:first-of-type {
+                        border-radius: 5px;
+                        font-weight: 500;
+                    }
+                    &:last-of-type {
+                        border-radius: 2rem;
+                        font-weight: var(--font-weight-semibold);
+                    }
+                }
+            }
+        }
+
+        & .products-region {
+            padding: 2rem 3rem;
+            background-color: var(--color-primary);
+            border-radius: 5px;
+            width: 60%;
+        }
+    }
+}

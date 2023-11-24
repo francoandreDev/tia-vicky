@@ -1,3 +1,4 @@
+import { addClickEvent } from "./event-listeners.js";
 import { appendElement } from "./managers.js";
 
 export function fetchTemplate(path, fn) {
@@ -99,4 +100,46 @@ export function createListAllFilterTemplate(parent, text) {
         <p>${text}</p>
     `;
     appendElement(parent, showFilter);
+}
+
+export function createCartPageTemplate(parent) {
+    const cartModule = document.createElement("div");
+    cartModule.id = "cart-module";
+    cartModule.classList.add("template");
+    let totalPrice = "0.00";
+    cartModule.innerHTML = `
+        <div class="window">
+            <section class="window_section">
+                <h2>Lista de Productos</h2>
+                <section class="products-region"></section>
+            </section>
+            <section class="window_section">
+                <h2>Resumen de la Compra</h2>
+                <section class="products-region"></section>
+                <section class="interactive-zone">
+                    <button>Total a Pagar: S/. ${totalPrice}</button>
+                    <button>Pagar</button>
+                </section>
+            </section>
+        </div>
+        `;
+
+    const { body } = document;
+    body.insertBefore(cartModule, parent);
+
+    const pageHeight = body.offsetHeight + "px";
+
+    cartModule.style.height = pageHeight;
+
+    addClickEvent(cartModule, () => {
+        closeTemplate();
+    });
+}
+
+export function closeTemplate() {
+    const template = document.getElementsByClassName("template")[0];
+    template.classList.add("remove");
+    setTimeout(() => {
+        document.body.removeChild(template);
+    }, 1000);
 }

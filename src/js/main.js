@@ -1,3 +1,4 @@
+import { addClickCart } from "./functions/pages/cart.page.js";
 import {
     addClickOnMapImage,
     clickLogoTiaVicky,
@@ -12,6 +13,7 @@ main();
 function main() {
     try {
         executeJSHomePage();
+        executeJSCartPage();
     } catch (err) {
         showError(err);
     }
@@ -22,5 +24,9 @@ function main() {
         productsInteractive();
         commentsInteractive();
         addClickOnMapImage();
+    }
+
+    function executeJSCartPage() {
+        addClickCart();
     }
 }
