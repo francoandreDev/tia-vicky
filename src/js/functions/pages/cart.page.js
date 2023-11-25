@@ -1,11 +1,12 @@
-import { addClickEvent } from "../utils/event-listeners.js";
+import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 import { cartProducts } from "../utils/global-variables.js";
-import { appendElement, scrollTo } from "../utils/managers.js";
+import { appendElement, resetInnerHTML, scrollTo } from "../utils/managers.js";
 import {
     closeTemplate,
     createCartPageTemplate,
     createProductTemplateCart,
     createSummaryProductTemplateCart,
+    updateTotalPrice,
 } from "../utils/templates.js";
 
 export function addClickCart() {
@@ -31,6 +32,7 @@ function fillDataProductsList() {
     const ProductSectionElement = document.querySelector(
         "#cart-module .window_section:first-of-type .products-region"
     );
+    resetInnerHTML(ProductSectionElement);
     const listProducts = cartProducts.listProducts();
     listProducts.forEach((product) => {
         const productElement = createProductTemplateCart(product);
@@ -42,6 +44,7 @@ function fillDataSummaryShop() {
     const ProductSectionElement = document.querySelector(
         "#cart-module .window_section:last-of-type .products-region"
     );
+    resetInnerHTML(ProductSectionElement);
     const listProducts = cartProducts.listProducts();
     listProducts.forEach((product) => {
         const productElement = createSummaryProductTemplateCart(product);
@@ -52,5 +55,20 @@ function fillDataSummaryShop() {
 export function deleteProductLogic(buttonElement, id) {
     addClickEvent(buttonElement, () => {
         cartProducts.removeProduct(id);
+        updateCart();
+        updateTotalPrice();
     });
+}
+
+export function changeAmountLogic(inputElement, product) {
+    addInputEvent(inputElement, () => {
+        // ? update amount product
+        cartProducts.addProduct(product, inputElement.value);
+        updateTotalPrice();
+    });
+}
+
+function updateCart() {
+    fillDataProductsList();
+    fillDataSummaryShop();
 }

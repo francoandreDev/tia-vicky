@@ -1,7 +1,7 @@
-import { deleteProductLogic } from "../pages/cart.page.js";
+import { changeAmountLogic, deleteProductLogic } from "../pages/cart.page.js";
 import { addClickProducts, changeInputValue } from "../pages/home.page.js";
 import { addClickEvent } from "./event-listeners.js";
-import { cartProducts } from "./global-variables.js";
+import { cartProducts, soundsPath } from "./global-variables.js";
 import { appendElement } from "./managers.js";
 
 export function fetchTemplate(path, fn) {
@@ -121,6 +121,8 @@ export function createListAllFilterTemplate(parent, text) {
     appendElement(parent, showFilter);
 }
 
+let cartModuleStored = document.createElement("div");
+
 export function createCartPageTemplate(parent) {
     const cartModule = document.createElement("div");
     cartModule.id = "cart-module";
@@ -147,9 +149,23 @@ export function createCartPageTemplate(parent) {
     body.insertBefore(cartModule, parent);
     const pageHeight = body.offsetHeight + "px";
     cartModule.style.height = pageHeight;
-    addClickEvent(cartModule, () => {
-        closeTemplate();
-    });
+    addClickEvent(
+        cartModule.querySelector(".window"),
+        () => {
+            closeTemplate();
+        },
+        soundsPath + "click-classic.wav",
+        false
+    );
+    cartModuleStored = cartModule;
+}
+
+export function updateTotalPrice() {
+    const buttonElement = cartModuleStored.querySelector(
+        ".window_section:last-of-type .interactive-zone button"
+    );
+    buttonElement.textContent =
+        "Total a Pagar: S/. " + cartProducts.calcTotalPrice();
 }
 
 export function closeTemplate() {
@@ -181,17 +197,17 @@ export function removeClassInElements(elements, oldClassName, newClassName) {
 
 export function createProductTemplateCart(product) {
     const productElement = document.createElement("section");
-    productElement.classList.add("product", "card");
+    productElement.classList.add("product", "card", "cart");
     const { amount, name, image, price, category, description } = product;
     let showPrice = price.toString().endsWith(".5") ? price + "0" : price;
     productElement.innerHTML = `
         <div class="wrapper-image">
-        <img src=${image} loading="lazy" alt= "Imagen de " ${name}>
-        <!-- pricing tag -->
-        <div class="tag bg-default">
+            <img src=${image} loading="lazy" alt= "Imagen de " ${name}>
+            <!-- pricing tag -->
+            <div class="tag bg-default">
             <p class="price">S/. ${showPrice}</p>
-        </div>
-        <!-- pricing tag -->
+            </div>
+            <!-- pricing tag -->
         </div>
         <h3 class="name">${name}</h3>
         <p class="category">${category}</p>
@@ -201,8 +217,13 @@ export function createProductTemplateCart(product) {
             <input type="number" aria-label="input-number-${name}" value="${amount}">
         </div>
     `;
-    const element = productElement.querySelector(".interactive-zone");
-    const buttonElement = element.querySelector("button");
+    const buttonElement = productElement.querySelector(
+        ".interactive-zone button"
+    );
+    const inputElement = productElement.querySelector(
+        ".interactive-zone input"
+    );
+    changeAmountLogic(inputElement, product);
     deleteProductLogic(buttonElement, product.id);
     return productElement;
 }

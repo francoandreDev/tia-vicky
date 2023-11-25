@@ -12,7 +12,7 @@ export class Cart {
     }
 
     removeProduct(id) {
-        this.#cart.filter((product) => product.id !== id);
+        this.#cart = this.#cart.filter((order) => order.id !== id);
     }
 
     listProducts() {
@@ -34,6 +34,7 @@ export class Cart {
             0
         );
         this.totalPrice = Number(this.totalPrice.toFixed(2));
+        if(this.totalPrice === NaN) return "Cantidad no válida"
         return this.totalPrice;
     }
 }

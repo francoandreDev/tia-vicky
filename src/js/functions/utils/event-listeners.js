@@ -4,15 +4,17 @@ import { clickAudio, inputAudio } from "./managers.js";
 export function addClickEvent(
     element,
     fn,
-    sound = soundsPath + "click-classic.wav"
+    sound = soundsPath + "click-classic.wav",
+    bubble = true
 ) {
     const audio = new Audio(sound);
     element.addEventListener(
         "click",
         (e) => {
-            e.stopPropagation();
-            fn();
-            clickAudio(audio);
+            if ((bubble === false && e.target === element) || bubble) {
+                fn();
+                clickAudio(audio);
+            }
         },
         { passive: true }
     );

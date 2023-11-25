@@ -172,9 +172,7 @@ export function addClickProducts(object, amount = 1, input = "") {
     if (object === undefined) return;
     const { element } = object;
     addClickEvent(element, () => {
-        if (input !== "") {
-            input.value = 0;
-        }
+        if (input !== "") input.value = 0;
         const { values } = object;
         cartProducts.addProduct(values, amount);
     });
