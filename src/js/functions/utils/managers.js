@@ -4,6 +4,12 @@ import { localStorage } from "./global-variables.js";
 import { capitalizeString } from "./stringFunctions.js";
 import { fetchTemplate } from "./templates.js";
 
+export function scrollTo(
+    scrollConfig = { top: 0, left: 0, behavior: "smooth" }
+) {
+    window.scroll(scrollConfig);
+}
+
 export function dataJsonObjectManagement(
     query,
     jsonPath,

@@ -14,6 +14,7 @@ import {
     toggleClassElement,
     getLocalStorageProperty,
     capitalizeTextInput,
+    scrollTo,
 } from "../utils/managers.js";
 
 import {
@@ -26,9 +27,8 @@ import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 
 export function clickLogoTiaVicky() {
     const logoElement = document.querySelector("h1.logo");
-    const scrollConfig = { top: 0, left: 0, behavior: "smooth" };
     addClickEvent(logoElement, () => {
-        window.scroll(scrollConfig);
+        scrollTo();
     });
 }
 
@@ -163,15 +163,18 @@ export function changeInputValue(object) {
         const storedObject = { element: buttonElement, values: object.values };
         if (inputElement.value <= 0) return;
         if (inputElement.value <= values.stock)
-            addClickProducts(storedObject, inputElement.value);
-        else addClickProducts(storedObject, inputElement.value);
+            addClickProducts(storedObject, inputElement.value, inputElement);
+        else addClickProducts(storedObject, inputElement.value, inputElement);
     });
 }
 
-export function addClickProducts(object, amount = 1) {
+export function addClickProducts(object, amount = 1, input = "") {
     if (object === undefined) return;
     const { element } = object;
     addClickEvent(element, () => {
+        if (input !== "") {
+            input.value = 0;
+        }
         const { values } = object;
         cartProducts.addProduct(values, amount);
     });

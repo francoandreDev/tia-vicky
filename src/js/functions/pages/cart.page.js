@@ -1,6 +1,6 @@
 import { addClickEvent } from "../utils/event-listeners.js";
 import { cartProducts } from "../utils/global-variables.js";
-import { appendElement } from "../utils/managers.js";
+import { appendElement, scrollTo } from "../utils/managers.js";
 import {
     closeTemplate,
     createCartPageTemplate,
@@ -16,8 +16,12 @@ export function addClickCart() {
 
     addClickEvent(cart, () => {
         const cartModule = document.getElementById("cart-module");
-        if (!cartModule) createCartPageTemplate(app);
-        else closeTemplate();
+        if (!cartModule) {
+            createCartPageTemplate(app);
+            setTimeout(() => {
+                scrollTo();
+            }, 2500);
+        } else closeTemplate();
         fillDataProductsList();
         fillDataSummaryShop();
     });
