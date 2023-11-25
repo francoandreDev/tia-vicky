@@ -273,7 +273,7 @@ img {
     transition: 0.5s ease;
     animation: show-card ease-in-out both;
     animation-timeline: view();
-    animation-range: entry -5% cover 25%;
+    animation-range: -5% 25%;
     &:hover {
         filter: saturate(1.1) contrast(1.1);
         cursor: pointer;
