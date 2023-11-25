@@ -53,7 +53,7 @@ main:has(.appear, .disappear) ~ footer,
 
 .app:has(.appear, .disappear) {
     background-color: rgba(0 0 0 /0.9);
-    min-height: 0;
+    min-height: 4rem;
     height: 100%;
     max-height: 100vh;
 }
@@ -131,9 +131,190 @@ main:has(.appear, .disappear) ~ footer,
             background-color: var(--color-primary);
             border-radius: 5px;
             width: 60%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    }
+}
+
+#cart-module {
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+#cart-module {
+    & .window_section {
+        &:first-of-type {
+            & .products-region .card {
+                position: relative;
+
+                & .wrapper-image {
+                    max-width: 60%;
+                    max-height: 10rem;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: -0.7rem;
+                        left: -0.8rem;
+                        width: 111%;
+                        height: calc(108% - 1px);
+                        transform: translateY(1px);
+                        border-radius: 1rem 0 0 1rem;
+                        background-color: var(--color-accent);
+                        z-index: 1;
+                    }
+                    & .tag {
+                        position: absolute;
+                        top: 1rem;
+                        left: -0.2rem;
+                        z-index: 2;
+                        padding: 0.1rem 0.5rem;
+                        border-radius: 0 5px 5px 0;
+                    }
+                }
+
+                & :is(.tag, .name) {
+                    width: fit-content;
+                }
+
+                & :is(.wrapper-image, img) {
+                    filter: drop-shadow(rgb(0 0 0 / 0.5) 1px 2px 2px);
+                    width: 100%;
+                    height: 99%;
+                    position: relative;
+                    top: -4%;
+                    left: -4%;
+                    z-index: 2;
+                }
+
+                & img {
+                    translate: 0.13rem 0.2rem;
+                }
+
+                & .name {
+                    font-size: 1.7rem;
+                    font-weight: bolder;
+                }
+
+                & .category {
+                    color: var(--color-accent);
+                    margin-bottom: 1rem;
+                    font-size: 1.2rem;
+                    position: relative;
+                    font-style: italic;
+                    font-weight: 600;
+                    left: 0.7rem;
+
+                    &::before {
+                        content: "-";
+                        position: absolute;
+                        inset: 0;
+                        left: -0.7rem;
+                        color: inherit;
+                    }
+                }
+
+                & .description {
+                    font-weight: var(--font-weight-lighter);
+                    opacity: 0.7;
+                    margin-bottom: 1rem;
+                    text-wrap: pretty;
+                    font-style: oblique;
+                    font-weight: 500;
+                    translate: 0.1rem;
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
+                }
+
+                & .interactive-zone {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 0 1rem;
+
+                    & > :is(button, input) {
+                        flex: 1;
+                        background-color: var(--color-opacity-accent);
+                        color: var(--color-secondary);
+                        font-weight: var(--font-weight-semibold);
+                        border-radius: 0.3rem;
+                        cursor: pointer;
+                        transition: scale 0.4s ease;
+                    }
+
+                    & > :is(button:hover, input:hover) {
+                        scale: 1.02;
+                    }
+
+                    & > button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.3rem;
+                        flex: 1;
+                    }
+
+                    & > input {
+                        text-align: center;
+                        width: 60px;
+                    }
+                }
+            }
+        }
+        &:last-of-type {
+            & .products-region .card {
+                display: grid;
+                grid-template-areas: "img name" "img price";
+                gap: 1rem;
+                position: relative;
+
+                & .wrapper-image {
+                    grid-area: img;
+                    max-width: 60%;
+                    max-height: 10rem;
+                }
+
+                & :is(.wrapper-image, img) {
+                    filter: drop-shadow(rgb(0 0 0 / 0.5) 1px 2px 2px);
+                    width: 100%;
+                    height: 99%;
+                    position: relative;
+                    top: -4%;
+                    left: -4%;
+                    z-index: 2;
+                }
+
+                & img {
+                    translate: 0.13rem 0.2rem;
+                }
+
+                & .name {
+                    grid-area: name;
+                    font-size: 1.7rem;
+                    font-weight: bolder;
+                }
+            }
+
+            .price {
+                grid-area: price;
+            }
+
+            & .interactive-zone {
+                justify-content: space-around;
+                & * {
+                    flex: 1;
+                    max-width: 15rem;
+                }
+            }
         }
     }
 }

@@ -630,6 +630,7 @@ img {
         padding: 0 1rem;
 
         & > :is(button, input) {
+            flex: 1;
             background-color: var(--color-opacity-accent);
             color: var(--color-secondary);
             font-weight: var(--font-weight-semibold);
