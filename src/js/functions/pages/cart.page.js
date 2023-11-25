@@ -1,5 +1,12 @@
 import { addClickEvent } from "../utils/event-listeners.js";
-import { closeTemplate, createCartPageTemplate } from "../utils/templates.js";
+import { cartProducts } from "../utils/global-variables.js";
+import { appendElement } from "../utils/managers.js";
+import {
+    closeTemplate,
+    createCartPageTemplate,
+    createProductTemplateCart,
+    createSummaryProductTemplateCart,
+} from "../utils/templates.js";
 
 export function addClickCart() {
     const cart = document.querySelector(
@@ -11,5 +18,35 @@ export function addClickCart() {
         const cartModule = document.getElementById("cart-module");
         if (!cartModule) createCartPageTemplate(app);
         else closeTemplate();
+        fillDataProductsList();
+        fillDataSummaryShop();
+    });
+}
+
+function fillDataProductsList() {
+    const ProductSectionElement = document.querySelector(
+        "#cart-module .window_section:first-of-type .products-region"
+    );
+    const listProducts = cartProducts.listProducts();
+    listProducts.forEach((product) => {
+        const productElement = createProductTemplateCart(product);
+        appendElement(ProductSectionElement, productElement);
+    });
+}
+
+function fillDataSummaryShop() {
+    const ProductSectionElement = document.querySelector(
+        "#cart-module .window_section:last-of-type .products-region"
+    );
+    const listProducts = cartProducts.listProducts();
+    listProducts.forEach((product) => {
+        const productElement = createSummaryProductTemplateCart(product);
+        appendElement(ProductSectionElement, productElement);
+    });
+}
+
+export function deleteProductLogic(buttonElement, id) {
+    addClickEvent(buttonElement, () => {
+        cartProducts.removeProduct(id);
     });
 }

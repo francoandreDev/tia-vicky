@@ -16,7 +16,11 @@ import {
     capitalizeTextInput,
 } from "../utils/managers.js";
 
-import { dataPath, shopProducts } from "../utils/global-variables.js";
+import {
+    cartProducts,
+    dataPath,
+    shopProducts,
+} from "../utils/global-variables.js";
 
 import { addClickEvent, addInputEvent } from "../utils/event-listeners.js";
 
@@ -63,6 +67,7 @@ export function productsInteractive() {
     showSelectedFilters();
     showAllFilters();
     filterProducts();
+    addClickProducts();
 
     function searchProducts() {
         const allProductsElement = document.querySelector(
@@ -147,6 +152,29 @@ export function productsInteractive() {
             appendElement(parent, productElement);
         });
     }
+}
+
+export function changeInputValue(object) {
+    const inputElement = object.element.querySelector("input");
+    if (inputElement === undefined) return;
+    addInputEvent(inputElement, () => {
+        const { values } = object;
+        const buttonElement = object.element.querySelector("button");
+        const storedObject = { element: buttonElement, values: object.values };
+        if (inputElement.value <= 0) return;
+        if (inputElement.value <= values.stock)
+            addClickProducts(storedObject, inputElement.value);
+        else addClickProducts(storedObject, inputElement.value);
+    });
+}
+
+export function addClickProducts(object, amount = 1) {
+    if (object === undefined) return;
+    const { element } = object;
+    addClickEvent(element, () => {
+        const { values } = object;
+        cartProducts.addProduct(values, amount);
+    });
 }
 
 export function commentsInteractive() {

@@ -1,4 +1,7 @@
+import { deleteProductLogic } from "../pages/cart.page.js";
+import { addClickProducts, changeInputValue } from "../pages/home.page.js";
 import { addClickEvent } from "./event-listeners.js";
+import { cartProducts } from "./global-variables.js";
 import { appendElement } from "./managers.js";
 
 export function fetchTemplate(path, fn) {
@@ -9,10 +12,11 @@ export function fetchTemplate(path, fn) {
 }
 
 export function createCardTemplatePromos(props) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    const { name, image, description, prices, offer, time, stock } = props;
-    card.innerHTML = `
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+    const { name, category, image, description, prices, offer, time, stock } =
+        props;
+    cardElement.innerHTML = `
         <h3 class="promo-name text-center text-balance"><b>${name}</b></h3>
         <!-- content card -->
         <div class="wrapper-image">
@@ -34,7 +38,19 @@ export function createCardTemplatePromos(props) {
         <span class="stock">${stock}</span>
         <!-- offer -->
     `;
-    return card;
+    const storeObject = {
+        element: cardElement,
+        values: {
+            name,
+            category,
+            image,
+            description,
+            price: prices.new,
+            stock,
+        },
+    };
+    addClickProducts(storeObject);
+    return cardElement;
 }
 
 export function createProductTemplate(props) {
@@ -59,6 +75,9 @@ export function createProductTemplate(props) {
             <input type="number" aria-label="input-number-${name}" value="0">
         </div>
     `;
+    const element = productElement.querySelector(".interactive-zone");
+    const storeObject = { element: element, values: props };
+    changeInputValue(storeObject);
     return productElement;
 }
 
@@ -106,7 +125,6 @@ export function createCartPageTemplate(parent) {
     const cartModule = document.createElement("div");
     cartModule.id = "cart-module";
     cartModule.classList.add("template");
-    let totalPrice = "0.00";
     cartModule.innerHTML = `
         <div class="window">
             <section class="window_section">
@@ -117,20 +135,18 @@ export function createCartPageTemplate(parent) {
                 <h2>Resumen de la Compra</h2>
                 <section class="products-region"></section>
                 <section class="interactive-zone">
-                    <button>Total a Pagar: S/. ${totalPrice}</button>
+                    <button>Total a Pagar: S/. ${cartProducts.calcTotalPrice()}</button>
                     <button>Pagar</button>
                 </section>
             </section>
         </div>
         `;
-
     const { body } = document;
+    const [...appContent] = document.querySelectorAll(".app > main > *");
+    addClassInElements(appContent, "disappear");
     body.insertBefore(cartModule, parent);
-
     const pageHeight = body.offsetHeight + "px";
-
     cartModule.style.height = pageHeight;
-
     addClickEvent(cartModule, () => {
         closeTemplate();
     });
@@ -141,5 +157,71 @@ export function closeTemplate() {
     template.classList.add("remove");
     setTimeout(() => {
         document.body.removeChild(template);
+        const [...appContent] = document.querySelectorAll(".app > main > *");
+        removeClassInElements(appContent, "disappear", "appear");
     }, 1000);
+}
+
+export function addClassInElements(elements, className) {
+    elements.forEach((element) => {
+        element.classList.add(className);
+    });
+}
+
+export function removeClassInElements(elements, oldClassName, newClassName) {
+    elements.forEach((element) => {
+        element.classList.replace(oldClassName, newClassName);
+    });
+    setTimeout(() => {
+        elements.forEach((element) => {
+            element.classList.remove(newClassName);
+        });
+    }, 1000);
+}
+
+export function createProductTemplateCart(product) {
+    const productElement = document.createElement("section");
+    productElement.classList.add("product", "card");
+    const { amount, name, image, price, category, description } = product;
+    let showPrice = price.toString().endsWith(".5") ? price + "0" : price;
+    productElement.innerHTML = `
+        <div class="wrapper-image">
+        <img src=${image} loading="lazy" alt= "Imagen de " ${name}>
+        <!-- pricing tag -->
+        <div class="tag bg-default">
+            <p class="price">S/. ${showPrice}</p>
+        </div>
+        <!-- pricing tag -->
+        </div>
+        <h3 class="name">${name}</h3>
+        <p class="category">${category}</p>
+        <p class="description">${description}</p>
+        <div class="interactive-zone">
+            <button><i class="fa-solid fa-cart-plus"></i>Eliminar</button>
+            <input type="number" aria-label="input-number-${name}" value="${amount}">
+        </div>
+    `;
+    const element = productElement.querySelector(".interactive-zone");
+    const buttonElement = element.querySelector("button");
+    deleteProductLogic(buttonElement, product.id);
+    return productElement;
+}
+
+export function createSummaryProductTemplateCart(product) {
+    const productElement = document.createElement("section");
+    productElement.classList.add("product", "card");
+    const { name, image, price } = product;
+    let showPrice = price.toString().endsWith(".5") ? price + "0" : price;
+    productElement.innerHTML = `
+        <div class="wrapper-image">
+            <img src=${image} loading="lazy" alt= "Imagen de " ${name}>
+        </div>
+        <!-- pricing tag -->
+        <div class="tag bg-default">
+            <p class="price">S/. ${showPrice}</p>
+        </div>
+        <!-- pricing tag -->
+        <h3 class="name">${name}</h3>
+    `;
+    return productElement;
 }

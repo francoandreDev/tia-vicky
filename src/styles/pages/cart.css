@@ -20,11 +20,51 @@
     }
 }
 
+@keyframes disappear {
+    from {
+        display: block;
+    }
+    to {
+        display: none;
+    }
+}
+
+@keyframes appear {
+    from {
+        display: none;
+    }
+    to {
+        display: block;
+    }
+}
+
+.disappear {
+    animation: disappear 2s ease both;
+}
+
+.appear {
+    animation: appear 1s ease both;
+}
+
+main:has(.appear, .disappear) ~ footer,
+:is(.appear, .disappear) ~ .separator-wave {
+    display: none;
+}
+
+* {
+    overflow-y: scroll;
+}
+
+.app:has(.appear, .disappear) {
+    background-color: rgba(0 0 0 /0.9);
+}
+
 #cart-module {
-    position: absolute;
+    position: relative;
     top: 4rem;
     z-index: 4;
     width: 100vw;
+    height: 100%;
     background-color: rgba(0 0 0 / 0.9);
     animation: appear-module 2s ease both;
 
@@ -34,7 +74,7 @@
 
     & .window {
         padding: 0 2rem;
-        height: inherit;
+        height: 100%;
         background-color: rgba(255 255 255 / 0.3);
         border: 1px solid black;
         backdrop-filter: blur(5px);
@@ -63,12 +103,16 @@
 
             & .interactive-zone {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
-                width: 75%;
+                gap: 1rem;
+                width: 100%;
+                padding: 0 1rem;
 
                 & button {
                     padding: 0.4rem 1rem;
                     border: 0;
+                    margin: 0 auto;
                     &:first-of-type {
                         border-radius: 5px;
                         font-weight: 500;
@@ -86,6 +130,9 @@
             background-color: var(--color-primary);
             border-radius: 5px;
             width: 60%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
         }
     }
 }

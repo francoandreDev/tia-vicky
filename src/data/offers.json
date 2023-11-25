@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "Pizza Margarita",
+        "category": "Pizzas",
         "image": "https://www.annarecetasfaciles.com/files/pizza-margarita-1-scaled.jpg",
         "description": "Deliciosa pizza de tomate, mozzarella y albahaca",
         "offer": "2x1",
@@ -15,6 +16,7 @@
     {
         "id": 2,
         "name": "Hamburguesa Clásica",
+        "category": "Hamburguesas",
         "image": "https://www.cardamomo.news/__export/1602724862579/sites/debate/img/2020/10/14/disexo_sin_txtulo_x3x.jpg_1635092770.jpg",
         "description": "Una hamburguesa de carne jugosa con lechuga, tomate y queso",
         "offer": "3x2",
