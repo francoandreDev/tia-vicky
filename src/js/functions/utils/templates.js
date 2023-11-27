@@ -130,7 +130,7 @@ export function createCartPageTemplate(parent) {
     cartModule.innerHTML = `
         <div class="window">
             <section class="window_section">
-                <h2>Lista de Productos</h2>
+                <h2 id="lista-productos">Lista de Productos</h2>
                 <section class="products-region"></section>
             </section>
             <section class="window_section">
